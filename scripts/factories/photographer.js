@@ -6,7 +6,7 @@ function photographerFactory(data) {
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
         const lien = document.createElement('a')
-        lien.href = "photographer.html?id=${id}" 
+        lien.href = "photographer.html?id=" + id 
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture)
         const h2 = document.createElement( 'h2' );
@@ -44,11 +44,3 @@ function photographerFactory(data) {
 // la première fonction nous renvoie le resultat de la deuxieme fonction
 // on va cherche l'image dans le dossier image mais où va t on chercher les name ?? reponse : dans le tableau
 // photographers du doc index.js
-
-
-
-    // function photographerFactoryWithOtherDatas (photographerFactory, data) {
-    //     const {country, city, tagline, price} = data
-
-    //     return photographerFactory
-    // } 
