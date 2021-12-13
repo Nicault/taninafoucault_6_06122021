@@ -1,3 +1,15 @@
+const logo = document.querySelector(".logo")
+const header = document.querySelector("header")
+const lienHomePage = document.createElement("a")
+lienHomePage.href = "index.html"
+
+header.replaceChild(lienHomePage, logo)
+lienHomePage.appendChild(logo)
+
+
+
+
+
 function photographerHeader(data) {
     const { name, id, city, country, tagline, price, portrait } = data;
 
@@ -36,30 +48,53 @@ function photographerHeader(data) {
 
 
 
-async function getPhotographers() {
-
-    photographers
-    
+async function getPhotographers() {    
     return ({photographers})
 }
 
-async function displayData(photographers) {
+async function displayData3(photographers) {
     const photographHeader = document.querySelector(".photograph-header");
 
     for (let i = 0 ; i < photographers.length ; i++) {
         if (window.location.href.includes(photographers[i].id)){
             const photographerModel = photographerHeader(photographers[i]);
-            const userCardDOM = photographerModel.getUserCardDOM();
-            photographHeader.appendChild(userCardDOM);
+            photographerModel.getUserCardDOM();
+            // const userCardDOM = photographerModel.getUserCardDOM();
+            // photographHeader.appendChild(userCardDOM);
         }
     }
     
 
 };
 
-async function init() {
+async function init3() {
     const { photographers } = await getPhotographers();
-    displayData(photographers);
+    displayData3(photographers);
 };
 
-init();
+init3();
+
+async function displayData2(medias) {
+    const mediasSection = document.querySelector(".medias_section");
+
+    for (let i = 0 ; i < medias.length ; i++ ) {
+        if (window.location.href.includes(medias[i].photographerId)){
+        const mediaModel = mediaFactory(medias[i]);
+        const mediaCardDOM = mediaModel.getMediaCardDOM();
+        mediasSection.appendChild(mediaCardDOM);
+    }};
+};
+
+async function init2() {
+    const { medias } = await getMedias();
+    displayData2(medias);
+};
+
+init2();
+
+
+
+
+
+
+let iconHeart = document.querySelectorAll("i")
