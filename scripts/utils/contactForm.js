@@ -1,9 +1,25 @@
+const modal = document.getElementById("contact_modal");
+
+
 function displayModal() {
-    const modal = document.getElementById("contact_modal");
 	modal.style.display = "block";
 }
 
 function closeModal() {
-    const modal = document.getElementById("contact_modal");
     modal.style.display = "none";
 }
+
+
+const modalBG = document.createElement("div")
+modalBG.classList.add("modalBG")
+modal.appendChild(modalBG)
+
+
+const boutonEnvoyer = document.querySelector("form button")
+boutonEnvoyer.addEventListener("click", function(e) {
+    e.preventDefault()
+    closeModal()
+})
+
+
+

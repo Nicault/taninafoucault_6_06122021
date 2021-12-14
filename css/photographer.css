@@ -29,16 +29,34 @@ button:hover, button:active{
 
 
 .modal {
-
+    opacity: 100%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
     border-radius: 5px;
     background-color: #DB8876;
-    width: 50%;
-    display: flex;
+    width: 500px;
+    /* display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; */
     padding: 35px;
     margin: auto;
+    transform: translate(-50%, -50%);
+
+    z-index: 10;
+}
+
+.modalBG {
+    position: fixed;
+    top: 0;
+
+    height: 100vh;
+    width: 100vw;
+    background-color: white;
+    opacity: 70%;
+
+    z-index: 9;
 }
 
 .modal header {
@@ -81,6 +99,18 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+    padding: 0 10px;
+
+}
+
+
+#votre_message {
+    resize: none;
+    height: 136px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
 }
 
 .photograph-header{
@@ -95,37 +125,69 @@ form input {
 .medias_section{
     height: auto;
     margin : 0 100px;
-    display: grid;
+    /* display: grid;
     grid-template-columns: repeat(3, 33%);
-    justify-content: center;
+    justify-content: center; */
     /* gap: 20px; */
     /* grid-row: auto; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .medias_section article {
-    display: grid;
+    display: flex;
     justify-content: center;
-    margin-bottom: 50px;
+    flex-direction: column;
+    margin-bottom: 30px;
 }
 
 .medias_section img, .medias_section video {
     object-fit: cover;
-    height: 250px;
-    width: 250px;
+    height: 330px;
+    width: 330px;
+    border-radius: 5px;
 }
 
 .medias_section article div {
+    margin-top: 10px;
     display: flex;
     justify-content: space-between;
 }
 
-.medias_section h2 , .medias_section p{
+.medias_section h2 , .medias_section div{
     margin : 0;
     font-size: 18px;
     color : #901C1C;
 }
 
-i {
+.iconHeart {
     margin-left: 5px;
+    font-size: 18px;
+    color : #901C1C;
+}
+
+.likeButton, .likeButton:hover{
+    background-color: white;
+    border: none;
     cursor: pointer;
+}
+
+aside {
+    background-color: #DB8876;
+    position: fixed;
+    bottom: 0;
+    right: 50px;
+    height: 50px;
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    font-weight: bold;
+    border-radius: 5px 5px 0 0;
+}
+
+.littleHeart{
+    margin-left: 5px;
 }

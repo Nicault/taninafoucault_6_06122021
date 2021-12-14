@@ -32,6 +32,7 @@ function photographerFactory(data) {
         div.appendChild(cityCountry)
         div.appendChild(quote)
         div.appendChild(rate)
+
         return (article);
     }
     return { name, id, city, country, tagline, price, picture, getUserCardDOM }

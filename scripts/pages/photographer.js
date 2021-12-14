@@ -10,6 +10,8 @@ lienHomePage.appendChild(logo)
 
 
 
+
+
 function photographerHeader(data) {
     const { name, id, city, country, tagline, price, portrait } = data;
 
@@ -42,6 +44,10 @@ function photographerHeader(data) {
         div.appendChild(quote)
 
         header.insertBefore(div, button)
+
+        
+        const priceDay = document.querySelector(".priceDay")
+        priceDay.textContent = price + "€/jour"
     }
     return { name, id, city, country, tagline, price, picture, getUserCardDOM }
 }
@@ -82,6 +88,7 @@ async function displayData2(medias) {
         const mediaModel = mediaFactory(medias[i]);
         const mediaCardDOM = mediaModel.getMediaCardDOM();
         mediasSection.appendChild(mediaCardDOM);
+
     }};
 };
 
@@ -94,7 +101,3 @@ init2();
 
 
 
-
-
-
-let iconHeart = document.querySelectorAll("i")
