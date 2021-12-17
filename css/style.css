@@ -1,5 +1,11 @@
 @import url("photographer.css");
 
+
+*{
+    box-sizing: border-box;
+
+}
+
 a {
     text-decoration: none;
 }
@@ -13,7 +19,6 @@ body {
     margin: 0 auto;
     max-width: 1300px;
     min-width: 900px;
-    box-sizing: border-box;
 }
 
 

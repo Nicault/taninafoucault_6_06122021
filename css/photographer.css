@@ -35,13 +35,13 @@ button:hover, button:active{
     left: 50%;
     border-radius: 5px;
     background-color: #DB8876;
-    width: 500px;
+    width: 550px;
     /* display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between; */
     padding: 35px;
-    margin: auto;
+    /* margin: auto; */
     transform: translate(-50%, -50%);
 
     z-index: 10;
@@ -69,7 +69,7 @@ button:hover, button:active{
 }
 
 .modal header h2 {
-    font-size: 64px;
+    font-size: 60px;
     font-weight: normal;
     text-align: center;
 }
@@ -100,6 +100,8 @@ form input {
     border: none;
     border-radius: 5px;
     padding: 0 10px;
+    font-size: 20px;
+    font-family: "DM Sans";
 
 }
 
@@ -111,6 +113,8 @@ form input {
     border: none;
     border-radius: 5px;
     padding: 10px;
+    font-size: 20px;
+    font-family: "DM Sans";
 }
 
 .photograph-header{
@@ -177,9 +181,9 @@ aside {
     background-color: #DB8876;
     position: fixed;
     bottom: 0;
-    right: 50px;
-    height: 50px;
-    width: 200px;
+    right: 15%;
+    height: 45px;
+    width: 250px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -190,4 +194,13 @@ aside {
 
 .littleHeart{
     margin-left: 5px;
+}
+
+
+
+.block{
+    display: block;
+}
+.none{
+    display: none;
 }

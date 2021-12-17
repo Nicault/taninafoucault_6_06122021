@@ -12,6 +12,14 @@ aside.appendChild(totalLikes)
 aside.appendChild(priceDay)
 
 
+
+
+
+
+
+
+
+
 // function getLikes() {
 //     let likesCounter = 0
 //     for (let i = 0 ; i < medias.length ; i++ ) {
@@ -23,6 +31,8 @@ aside.appendChild(priceDay)
 
 
 let likesCount = 0
+
+
 function mediaFactory(data) {
     const { title, id, photographerId, image, likes, date, price, video } = data;
 
@@ -54,32 +64,35 @@ function mediaFactory(data) {
             if (image) {
                 const img = document.createElement( 'img' );
                 img.setAttribute("src", picture)
-                const h2 = document.createElement( 'h2' );
-                h2.textContent = title;   
+              
 
                 article.appendChild(img);
-                article.appendChild(div)
-                div.appendChild(h2)
-                div.appendChild(jaime)
+               
             } else {
                 const vdo = document.createElement('video');
+                // vdo.controls=true
                 const src = document.createElement("source")
                 src.setAttribute("src", videoMedia)
                 src.type = "video/mp4"
                 
                 article.appendChild(vdo);
                 vdo.appendChild(src)
-                article.appendChild(div)
-                div.appendChild(jaime)
-
+              
             }
 
-        const totalLikes = document.querySelector(".totalLikes")
-        const littleHeart = document.createElement("i")
-        littleHeart.setAttribute("class", "fas fa-heart")
-        littleHeart.classList.add("littleHeart")
-        totalLikes.textContent = (likesCount += likes)
-        totalLikes.appendChild(littleHeart)
+            article.appendChild(div)
+
+            const h2 = document.createElement( 'h2' );
+            h2.textContent = title;   
+            div.appendChild(h2)
+            div.appendChild(jaime)
+
+            const totalLikes = document.querySelector(".totalLikes")
+            const littleHeart = document.createElement("i")
+            littleHeart.setAttribute("class", "fas fa-heart")
+            littleHeart.classList.add("littleHeart")
+            totalLikes.textContent = (likesCount += likes)
+            totalLikes.appendChild(littleHeart)
         
 
 
