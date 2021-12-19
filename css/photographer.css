@@ -153,17 +153,25 @@ form input {
     border-radius: 5px;
 }
 
-.medias_section article div {
+.medias_section article > div {
     margin-top: 10px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
+
+.medias_section article div {
+    display: flex;
+    align-items: center;
+}
+
 
 .medias_section h2 , .medias_section div{
     margin : 0;
     font-size: 18px;
     color : #901C1C;
 }
+
 
 .iconHeart {
     margin-left: 5px;
@@ -192,8 +200,16 @@ aside {
     border-radius: 5px 5px 0 0;
 }
 
+aside > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 53px;
+}
+
 .littleHeart{
     margin-left: 5px;
+    align-self: center;
 }
 
 

@@ -1,14 +1,20 @@
-
+const littleHeart = document.createElement("i")
+littleHeart.setAttribute("class", "fas fa-heart")
+littleHeart.classList.add("littleHeart")
 // cree le aside
 
 const body = document.querySelector("body")
 const aside = document.createElement("aside")
+const likes = document.createElement("div")
 const totalLikes = document.createElement("div")
 totalLikes.classList.add("totalLikes")
 const priceDay = document.createElement("div")
 priceDay.classList.add("priceDay")
 body.appendChild(aside)
-aside.appendChild(totalLikes)
+
+aside.appendChild(likes)
+likes.appendChild(totalLikes)
+likes.appendChild(littleHeart)
 aside.appendChild(priceDay)
 
 
@@ -46,6 +52,7 @@ function mediaFactory(data) {
             const mediaSection = document.querySelector(".medias_section")
             const article = document.createElement( 'article' );
             const div = document.createElement("div")
+            const legende = document.createElement("div")
             const jaime = document.createElement("div")
             jaime.classList.add("likesNumber")
             const likeButton = document.createElement("button")
@@ -57,7 +64,8 @@ function mediaFactory(data) {
 
             jaime.textContent = likes
 
-            jaime.appendChild(likeButton)            
+            legende.appendChild(jaime)
+            legende.appendChild(likeButton)            
             likeButton.appendChild(iconHeart)
             mediaSection.appendChild(article)
 
@@ -85,14 +93,12 @@ function mediaFactory(data) {
             const h2 = document.createElement( 'h2' );
             h2.textContent = title;   
             div.appendChild(h2)
-            div.appendChild(jaime)
+            div.appendChild(legende)
 
             const totalLikes = document.querySelector(".totalLikes")
-            const littleHeart = document.createElement("i")
-            littleHeart.setAttribute("class", "fas fa-heart")
-            littleHeart.classList.add("littleHeart")
+            
+
             totalLikes.textContent = (likesCount += likes)
-            totalLikes.appendChild(littleHeart)
         
 
 

@@ -114,3 +114,9 @@ boutonEnvoyer.addEventListener("click", function(e) {
     e.preventDefault()
     validate()
 })
+
+
+
+
+
+// VOIR POUR METTRE UN MESSAGE DE VALIDATION QUAND ON ENVOIE LE FORMULAIRE + RED BOX !!
