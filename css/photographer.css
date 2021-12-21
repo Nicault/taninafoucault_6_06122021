@@ -60,18 +60,25 @@ button:hover, button:active{
 }
 
 .modal header {
+    /* display: flex; */
     justify-content: space-between;
+    align-items: baseline;
     width: 100%;
+    height: fit-content;
 }
 
 .modal header img {
     cursor: pointer;
+    /* position: absolute;
+    top: 40px;
+    right: 40px; */
 }
 
 .modal header h2 {
-    font-size: 60px;
+    font-size: 55px;
     font-weight: normal;
-    text-align: center;
+    /* text-align: center; */
+    margin: 0;
 }
 
 form {
@@ -128,7 +135,7 @@ form input {
 
 .medias_section{
     height: auto;
-    margin : 0 100px;
+    margin : 0 100px 20px 100px;
     /* display: grid;
     grid-template-columns: repeat(3, 33%);
     justify-content: center; */
@@ -185,6 +192,10 @@ form input {
     cursor: pointer;
 }
 
+/* .date{
+    display: none !important;
+} */
+
 aside {
     background-color: #DB8876;
     position: fixed;
@@ -200,7 +211,7 @@ aside {
     border-radius: 5px 5px 0 0;
 }
 
-aside > div {
+aside div:first-of-type {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -219,4 +230,65 @@ aside > div {
 }
 .none{
     display: none;
+}
+
+
+
+.trieur {
+    height: 48px;
+    width: 100%;
+    display: flex;
+    margin: -20px 100px 30px 100px;
+}
+
+.textTrieur{
+    height: fit-content;
+    margin-right: 20px;
+    color: black;
+    align-self: center;
+    font-weight: bold;
+
+}
+
+.triListe{
+    display: none;
+}
+
+.triListe a {
+    height: 48px;
+    color: white;
+    text-align: left;
+    padding: 15px 50px 15px 15px;
+    position: relative;
+    font-weight: normal;
+    font-size: 16px;
+}
+
+.triListe a:hover {
+    font-weight: bold;
+}
+
+.triListe a:first-of-type::after, .triListe a:nth-of-type(2)::after{
+    position: absolute;
+    top: 48px;
+    left: 10px;
+    content: "";
+    height: 1px;
+    width: 150px;
+    background-color: white;
+}
+
+.triStyle{
+    position: absolute;
+    min-height: 48px;    
+    height: fit-content;
+    padding: 0;
+}
+.triStyle:hover{
+    background-color: #901C1C;
+}
+.triStyle:hover .triListe {
+    display: flex;
+    flex-direction: column;
+
 }

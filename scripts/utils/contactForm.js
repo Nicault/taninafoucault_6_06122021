@@ -1,5 +1,14 @@
 const modal = document.getElementById("contact_modal");
 const boutonEnvoyer = document.querySelector("form button")
+const contactezMoi = document.querySelector("header h2")
+
+let name 
+for (let i = 0 ; i < photographers.length ; i++) {
+  if (window.location.href.includes(photographers[i].id)){
+    name = photographers[i].name
+  }}
+
+contactezMoi.textContent="Contactez-moi " + name
 
 
 function displayModal() {

@@ -12,6 +12,15 @@ lienHomePage.appendChild(logo)
 
 
 
+
+
+
+
+
+
+
+
+
 function photographerHeader(data) {
     const { name, id, city, country, tagline, price, portrait } = data;
 
@@ -58,8 +67,8 @@ async function getPhotographers() {
     return ({photographers})
 }
 
-async function displayData3(photographers) {
-    const photographHeader = document.querySelector(".photograph-header");
+async function displayDataHeader(photographers) {
+    // const photographHeader = document.querySelector(".photograph-header");
 
     for (let i = 0 ; i < photographers.length ; i++) {
         if (window.location.href.includes(photographers[i].id)){
@@ -73,31 +82,42 @@ async function displayData3(photographers) {
 
 };
 
-async function init3() {
+async function initHeader() {
     const { photographers } = await getPhotographers();
-    displayData3(photographers);
+    displayDataHeader(photographers);
 };
 
-init3();
+initHeader();
 
-async function displayData2(medias) {
-    const mediasSection = document.querySelector(".medias_section");
+
+
+
+
+const mediasSection = document.querySelector(".medias_section");
+let mediasPage = []
+
+
+async function displayDataMedias(medias) {
 
     for (let i = 0 ; i < medias.length ; i++ ) {
         if (window.location.href.includes(medias[i].photographerId)){
+
         const mediaModel = mediaFactory(medias[i]);
         const mediaCardDOM = mediaModel.getMediaCardDOM();
         mediasSection.appendChild(mediaCardDOM);
+        mediasPage.push(medias[i])
 
     }};
 };
 
-async function init2() {
+async function initMedias() {
     const { medias } = await getMedias();
-    displayData2(medias);
+    displayDataMedias(medias);
 };
 
-init2();
+initMedias();
+
+
 
 
 
