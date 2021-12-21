@@ -69,9 +69,9 @@ button:hover, button:active{
 
 .modal header img {
     cursor: pointer;
-    /* position: absolute;
+    position: absolute;
     top: 40px;
-    right: 40px; */
+    right: 40px;
 }
 
 .modal header h2 {
@@ -88,7 +88,7 @@ form {
     align-items: flex-start;
 }
 
-form label {
+form label{
     color: #312E2E;
     font-size: 36px;
 }
@@ -123,6 +123,24 @@ form input {
     font-size: 20px;
     font-family: "DM Sans";
 }
+
+.modalValidation{
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.validationText{
+    /* position: absolute;
+    top: 80px; */
+    color: #312E2E;
+    font-size: 36px;
+    margin-top: 40px;
+    /* margin-bottom: 50px; */
+}
+
 
 .photograph-header{
     padding: 0 30px;
@@ -184,6 +202,7 @@ form input {
     margin-left: 5px;
     font-size: 18px;
     color : #901C1C;
+    font-weight: normal;
 }
 
 .likeButton, .likeButton:hover{
@@ -252,9 +271,14 @@ aside div:first-of-type {
 
 .triListe{
     display: none;
+    /* width: 170px;
+    display: flex;
+    flex-direction: column; */
+    /* justify-content: space-between; */
+
 }
 
-.triListe a {
+.triListe a, .triStyle {
     height: 48px;
     color: white;
     text-align: left;
@@ -263,6 +287,7 @@ aside div:first-of-type {
     font-weight: normal;
     font-size: 16px;
 }
+
 
 .triListe a:hover {
     font-weight: bold;
@@ -278,17 +303,46 @@ aside div:first-of-type {
     background-color: white;
 }
 
-.triStyle{
+.triButton{
     position: absolute;
     min-height: 48px;    
     height: fit-content;
     padding: 0;
+    overflow: hidden;
 }
-.triStyle:hover{
+.triButton:hover{
     background-color: #901C1C;
+    color: white;
 }
-.triStyle:hover .triListe {
-    display: flex;
-    flex-direction: column;
 
+.triStyle {
+    position: absolute;
+    top: 0;
+}
+.triStyle:hover {
+    color: white;
+}
+
+
+.fa-chevron-down{
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    right: 10px;
+    top: 14px;
+    /* z-index: 1000; */
+}
+
+.rotate{
+    transform: rotate(180deg);
+}
+
+.list {
+    position: absolute;
+    bottom: 5px;
+    display: flex;
+    flex-direction: column; 
+}
+.listHeight{
+    height: 149px; 
 }

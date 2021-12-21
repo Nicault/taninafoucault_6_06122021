@@ -1,6 +1,44 @@
+// LIKES
+
+let likesCount = 0
+
+function total () {
+for (let i = 0 ; i < mediasPage.length ; i++) {
+    likesCount += mediasPage[i].likes
+}
+    totalLikes.textContent = likesCount}
+
+total()
+
+
+let likesNumber = document.querySelectorAll(".likesNumber")
+let likeButton = document.querySelectorAll(".likeButton")
+let iconHeart = document.querySelectorAll(".iconHeart")
+
+
+// like et unlike 
+
+for (let i = 0 ; i < likesNumber.length ; i++) {
+    likeButton[i].addEventListener("click", function() {
+        if (iconHeart[i].classList.contains("far")){
+        likesNumber[i].textContent++
+        totalLikes.textContent++
+        iconHeart[i].classList.remove("far")
+        iconHeart[i].classList.add("fas")
+        } else {
+        likesNumber[i].textContent --
+        totalLikes.textContent --
+        iconHeart[i].classList.add("far")
+        iconHeart[i].classList.remove("fas")
+        }
+    })
+}
+
+
 // tri
 
-function sortedFactory() {    
+function sortedFactory() {   
+     
     
     mediasSection.innerHTML = ""
 
@@ -22,10 +60,10 @@ function displayByLikes90(mediasPage) {
 
 //les moins aimées
 
-function displayByLikes09(mediasPage) {
-    mediasPage.sort(function(a, b){return a.likes - b.likes})
+// function displayByLikes09(mediasPage) {
+//     mediasPage.sort(function(a, b){return a.likes - b.likes})
 
-};
+// };
 
 //recent
 
@@ -37,11 +75,11 @@ function displayByDate90(mediasPage) {
 
 // old
 
-function displayByDate09(mediasPage) {
+// function displayByDate09(mediasPage) {
 
-    mediasPage.sort(function(a, b){return a.date.replaceAll("-", "") - b.date.replaceAll("-", "")})
+//     mediasPage.sort(function(a, b){return a.date.replaceAll("-", "") - b.date.replaceAll("-", "")})
 
-};
+// };
 
 // a - z
 
@@ -53,11 +91,11 @@ function displayByNameAZ(mediasPage) {
 
 // z - a
 
-function displayByNameZA(mediasPage) {
+// function displayByNameZA(mediasPage) {
 
-    mediasPage.sort(function(a, b){return b.title.localeCompare(a.title)})
+//     mediasPage.sort(function(a, b){return b.title.localeCompare(a.title)})
 
-};
+// };
 
 // fonction à appeler
 
@@ -67,35 +105,42 @@ function initSortedMedias(fonction) {
 };
 
 
+// pop date titre eventListeners
+
+
+pop.addEventListener("click", function() {initSortedMedias(displayByLikes90)})
+date.addEventListener("click", function() {initSortedMedias(displayByDate90)})
+titre.addEventListener("click", function() {initSortedMedias(displayByNameAZ)})
 
 
 
+let pdt = [pop, date, titre]
 
 
+triStyle.textContent = "Défaut"
 
-
-
-
-
-
-
-
-
-
-
-
-// LIKES
-
-
-const likesNumber = document.querySelectorAll(".likesNumber")
-let likeButton = document.querySelectorAll(".likeButton")
-
-
-
-for (let i = 0 ; i < likesNumber.length ; i++) {
-    likeButton[i].addEventListener("click", function() {
-        likesNumber[i].textContent++
-        totalLikes.textContent++
-        likeButton[i].setAttribute("disabled", true)
-    })
+function toggleStyle() {
+    chevron.classList.toggle("rotate")
+    triListe.classList.toggle("list")
+    triButton.classList.toggle("listHeight") 
 }
+
+
+
+triButton.addEventListener("click", function(){
+    triStyle.textContent = ""
+    toggleStyle()   
+})
+
+
+for (let i = 0 ; i < pdt.length ; i++) {
+    pdt[i].addEventListener("click", function(e){
+        e.stopPropagation()
+        toggleStyle()
+        triStyle.textContent = pdt[i].textContent})
+}
+
+
+
+// ATTENTION BUG DES LIKES QUAND ON APPLIQUE UN TRI SUR LES IMAGES
+

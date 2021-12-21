@@ -1,9 +1,27 @@
 const modal = document.getElementById("contact_modal");
 const boutonEnvoyer = document.querySelector("form button")
 const contactezMoi = document.querySelector("header h2")
+const modalValidation = document.querySelector(".modalValidation")
 
-let name 
+
+// message de validation 
+function displayValidation() {
+  modalValidation.style.display = "flex";
+}
+
+function closeValidation() {
+    modalValidation.style.display = "none";
+}
+
+closeValidation()
+
+//
+
+
+
+
 for (let i = 0 ; i < photographers.length ; i++) {
+  let name 
   if (window.location.href.includes(photographers[i].id)){
     name = photographers[i].name
   }}
@@ -18,6 +36,12 @@ function displayModal() {
 function closeModal() {
     modal.style.display = "none";
 }
+
+
+
+
+
+
 
 // background opacity + closemodal on click
 const modalBG = document.createElement("div")
@@ -103,6 +127,8 @@ function validate() {
         nom.value = ""
         email.value = ""
         message.value = ""
+
+        displayValidation()
 
     } else {
   

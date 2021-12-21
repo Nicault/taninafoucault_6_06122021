@@ -108,6 +108,7 @@ async function displayDataMedias(medias) {
         mediasPage.push(medias[i])
 
     }};
+    
 };
 
 async function initMedias() {
