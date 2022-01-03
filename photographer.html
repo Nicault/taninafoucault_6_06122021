@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
@@ -10,7 +10,7 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <img src="assets/images/logo.png" class="logo" alt="Logo Fisheye"/>
     </header>
     <main id="main">
       <div class="photograph-header">
@@ -24,7 +24,7 @@
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img src="assets/icons/close.svg" onclick="closeModal()" alt="fermer"/>
         </header>
 				<form>
 					<div>
@@ -38,7 +38,7 @@
             <input type="text" id="email"/>
             <p class="warningMessage none">Veuillez saisir une adresse mail valide</p>
             <label for="votre_message">Votre message</label>
-            <textarea type="text" id="votre_message"></textarea>
+            <textarea id="votre_message"></textarea>
             <p class="warningMessage none">Veuillez saisir votre message</p>
 					</div>
           <button class="contact_button">Envoyer</button>
@@ -48,7 +48,7 @@
     <div class="groupe_validation">
       <div class="modal modalValidation">
         <header>
-        <img src="assets/icons/close.svg" onclick="closeValidation()" />
+        <img src="assets/icons/close.svg" onclick="closeValidation()" alt="fermer"/>
       </header>
         <div class = "validationText">
           Votre message a bien été transmis.
@@ -58,7 +58,7 @@
     </div>
     <script src="scripts/utils/data.js"></script>
     <script src="scripts/utils/contactForm.js"></script>
-    <script src="scripts/factories/Photographer.js"></script>
+    <script src="scripts/factories/photographer.js"></script>
     <script src="scripts/factories/media.js"></script>
     <script src="scripts/pages/photographer.js"></script>
     <script src="scripts/utils/likes.js"></script>
