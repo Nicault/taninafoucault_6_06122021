@@ -62,6 +62,8 @@ lightBoxBG.addEventListener("click", function() {closeLightBox()})
 
 
 function lightboxCurrentMedia(indice) {
+    lightBoxMediaTitle.textContent = mediasPage[indice].title
+
     if (mediasPage[indice].image){
         lightBoxMedia.innerHTML = "<img src='assets/medias/" + mediasPage[indice].image + "'>"
     }
@@ -80,7 +82,6 @@ function displayLightboxMedias() {
         lightboxOpener[i].addEventListener("click", function() {
             displayLightBox()
             let currentMediaIndex = i
-            lightBoxMediaTitle.textContent = mediasPage[currentMediaIndex].title
             lightboxCurrentMedia(currentMediaIndex)
 
             chevronR.addEventListener("click", function() {
