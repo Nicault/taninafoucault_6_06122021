@@ -110,16 +110,17 @@ function mediaFactory(data) {
             if (image) {
                 const img = document.createElement( 'img' );
                 img.setAttribute("src", picture)
+                img.classList.add("lightboxOpener")
               
 
                 article.appendChild(img);
                
             } else {
                 const vdo = document.createElement('video');
-                // vdo.controls=true
                 const src = document.createElement("source")
                 src.setAttribute("src", videoMedia)
                 src.type = "video/mp4"
+                vdo.classList.add("lightboxOpener")
                 
                 article.appendChild(vdo);
                 vdo.appendChild(src)

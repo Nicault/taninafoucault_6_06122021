@@ -1,40 +1,3 @@
-// LIKES
-
-let likesCount = 0
-
-function total () {
-for (let i = 0 ; i < mediasPage.length ; i++) {
-    likesCount += mediasPage[i].likes
-}
-    totalLikes.textContent = likesCount}
-
-total()
-
-
-let likesNumber = document.querySelectorAll(".likesNumber")
-let likeButton = document.querySelectorAll(".likeButton")
-let iconHeart = document.querySelectorAll(".iconHeart")
-
-
-// like et unlike 
-
-for (let i = 0 ; i < likesNumber.length ; i++) {
-    likeButton[i].addEventListener("click", function() {
-        if (iconHeart[i].classList.contains("far")){
-        likesNumber[i].textContent++
-        totalLikes.textContent++
-        iconHeart[i].classList.remove("far")
-        iconHeart[i].classList.add("fas")
-        } else {
-        likesNumber[i].textContent --
-        totalLikes.textContent --
-        iconHeart[i].classList.add("far")
-        iconHeart[i].classList.remove("fas")
-        }
-    })
-}
-
-
 // tri
 
 function sortedFactory() {   
@@ -55,6 +18,7 @@ function sortedFactory() {
 
 
 function displayByLikes90(mediasPage) {
+
     mediasPage.sort(function(a, b){return b.likes - a.likes})
 };
 
@@ -70,7 +34,6 @@ function displayByLikes90(mediasPage) {
 function displayByDate90(mediasPage) {
 
     mediasPage.sort(function(a, b){return b.date.replaceAll("-", "") - a.date.replaceAll("-", "")})
-
 };
 
 // old
@@ -86,7 +49,6 @@ function displayByDate90(mediasPage) {
 function displayByNameAZ(mediasPage) {
 
     mediasPage.sort(function(a, b){return a.title.localeCompare(b.title)})
-
 };
 
 // z - a
@@ -97,11 +59,14 @@ function displayByNameAZ(mediasPage) {
 
 // };
 
-// fonction à appeler
+// fonction à appeler + fonction like car les elements bougent /!\ il faudra aussi
+// ajouter le display lightbox ici à la fin.voir pour tout mettre dans le meme fichier ?
 
 function initSortedMedias(fonction) {
     fonction(mediasPage);
     sortedFactory()
+    like()
+    displayLightboxMedias()
 };
 
 
@@ -141,6 +106,4 @@ for (let i = 0 ; i < pdt.length ; i++) {
 }
 
 
-
-// ATTENTION BUG DES LIKES QUAND ON APPLIQUE UN TRI SUR LES IMAGES
 

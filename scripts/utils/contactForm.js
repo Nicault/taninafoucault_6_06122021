@@ -2,20 +2,30 @@ const modal = document.getElementById("contact_modal");
 const boutonEnvoyer = document.querySelector("form button")
 const contactezMoi = document.querySelector("header h2")
 const modalValidation = document.querySelector(".modalValidation")
+const groupeValidation = document.querySelector(".groupe_validation")
 
 
-// message de validation 
+// message de validation + validationBG
 function displayValidation() {
-  modalValidation.style.display = "flex";
+  groupeValidation.style.display = "flex";
 }
 
 function closeValidation() {
-    modalValidation.style.display = "none";
+  groupeValidation.style.display = "none";
 }
 
 closeValidation()
 
-//
+
+
+
+
+const modalValidationBG = document.createElement("div")
+modalValidationBG.classList.add("modalBG")
+groupeValidation.appendChild(modalValidationBG)
+modalValidationBG.addEventListener("click", function() {closeValidation()})
+
+
 
 
 
