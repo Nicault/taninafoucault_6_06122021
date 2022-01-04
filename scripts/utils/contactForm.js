@@ -195,8 +195,7 @@ const  focusableElements = document.querySelectorAll(".modal input, .modal texta
 // const focusableContent = modal.querySelectorAll(focusableElements);
 // const lastFocusableElement = focusableContent[focusableContent.length - 1]; // get last element to be focused inside modal
 
-
-document.addEventListener('keydown', function(e) {
+function keepFocusOnModal(e, firstElement, lastElement) {
   let isTabPressed = e.key === 'Tab'
 
   if (!isTabPressed) {
@@ -204,15 +203,20 @@ document.addEventListener('keydown', function(e) {
   }
 
   if (e.shiftKey) { // if shift key pressed for shift + tab combination
-    if (document.activeElement === prenom) {
-      envoyer.focus(); // add focus for the last focusable element
+    if (document.activeElement === firstElement) {
+      lastElement.focus(); // add focus for the last focusable element
       e.preventDefault();
     }
   } else { // if tab key is pressed
-    if (document.activeElement === envoyer) { // if focused has reached to last focusable element then focus first focusable element after pressing tab
-      prenom.focus(); // add focus for the first focusable element
+    if (document.activeElement === lastElement) { // if focused has reached to last focusable element then focus first focusable element after pressing tab
+      firstElement.focus(); // add focus for the first focusable element
       e.preventDefault();
     }
   }
-});
+
+}
+
+document.addEventListener('keydown', function(e) {
+  keepFocusOnModal(e, prenom, boutonEnvoyer) 
+})
 

@@ -16,12 +16,12 @@ exit.setAttribute("id", "croixLightbox")
 lightBoxBG.classList.add("modalBG")
 chevronR.classList.add("fas")
 chevronR.classList.add("fa-chevron-right")
-chevronR.tabIndex = 0
 chevronL.classList.add("fas" )
 chevronL.classList.add("fa-chevron-left")
-chevronL.tabIndex = 0
 lightBoxMedia.classList.add("lightBoxMedia")
+lightBoxMedia.tabIndex = 0
 lightBoxMediaTitle.classList.add("lightBoxMediaTitle")
+lightBoxMediaTitle.tabIndex = 0
 
 body.appendChild(lightBoxScreen)
 lightBoxScreen.appendChild(lightBox)
@@ -37,12 +37,12 @@ lightBox.appendChild(lightBoxMediaTitle)
 
 function displayLightBox() {
     lightBoxScreen.style.display = "block";
+    lightBoxMedia.focus()    
   }
   
   function closeLightBox() {     
     lightBoxMedia.innerHTML = ""
     lightBoxScreen.style.display = "none";
-
   }
   
 closeLightBox()
@@ -63,7 +63,7 @@ function displayCurrentMedia(indice) {
     lightBoxMediaTitle.textContent = mediasPage[indice].title
 
     if (mediasPage[indice].image){
-        lightBoxMedia.innerHTML = "<img src='assets/medias/" + mediasPage[indice].image + "'>"
+        lightBoxMedia.innerHTML = "<img src='assets/medias/" + mediasPage[indice].image + "' tabIndex='0'>"
     }
     else {
         lightBoxMedia.innerHTML = "<video controls> <source src='assets/medias/" + mediasPage[indice].video + "'> </video>"
@@ -135,7 +135,7 @@ function displayLightboxMedias() {
                 displayCurrentMedia(currentMediaIndex)
                 navigateBetweenMedias(currentMediaIndex)
             }
-        })
+        })  
     }
 }
 
@@ -144,6 +144,21 @@ displayLightboxMedias()
 
 
 
+// focus sur la lightbox
 
 
+document.addEventListener('keydown', function(e) {
+    keepFocusOnModal(e, lightBoxMedia, lightBoxMediaTitle) 
+  })
+
+
+
+
+// attention !! focus sur le lightBoxMedia à l'ouverture de la modale
+// puis focus sur l'image et le titre
+// donne l'impression d'un double focus car le contenu prend la taille du contenant
+// reflechir à une solution
+
+// il suffirait d'enlever le tabindex de l'image afin d'ignorer le focus de l'image
+// mais le focus de l'image semble important... à voir
 
