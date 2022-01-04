@@ -21,15 +21,15 @@
       
     </section>
     <div id="contact_modal">
-			<div class="modal">
+			<div class="modal" tabindex="-1">
 				<header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" alt="fermer"/>
+          <img src="assets/icons/close.svg" id="croixModale" onclick="closeModal()" alt="fermer"/>
         </header>
 				<form>
 					<div>
 						<label for="prenom">Prénom</label>
-						<input type="text" id="prenom"/>
+						<input type="text" id="prenom" />
             <p class="warningMessage none">Veuillez saisir votre prénom</p>
             <label for="nom">Nom</label>
             <input type="text" id="nom"/>
@@ -41,14 +41,14 @@
             <textarea id="votre_message"></textarea>
             <p class="warningMessage none">Veuillez saisir votre message</p>
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button" id="envoyer">Envoyer</button>
 				</form>
 			</div>
 		</div>
     <div class="groupe_validation">
-      <div class="modal modalValidation">
+      <div class="modal modalValidation" tabindex="-1">
         <header>
-        <img src="assets/icons/close.svg" onclick="closeValidation()" alt="fermer"/>
+        <img src="assets/icons/close.svg" id="croixValidation" onclick="closeValidation()" alt="fermer"/>
       </header>
         <div class = "validationText">
           Votre message a bien été transmis.

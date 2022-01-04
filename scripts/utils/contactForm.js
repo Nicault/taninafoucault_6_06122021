@@ -4,10 +4,17 @@ const contactezMoi = document.querySelector("header h2")
 const modalValidation = document.querySelector(".modalValidation")
 const groupeValidation = document.querySelector(".groupe_validation")
 
+const prenom = document.querySelector("#prenom")
+const nom = document.querySelector("#nom")
+const email = document.querySelector("#email")
+const message = document.querySelector("#votre_message")
+const fermer = document.querySelector(".modalValidation .closeButton")
 
 // message de validation + validationBG
+
 function displayValidation() {
   groupeValidation.style.display = "flex";
+  fermer.focus()    
 }
 
 function closeValidation() {
@@ -29,22 +36,21 @@ modalValidationBG.addEventListener("click", function() {closeValidation()})
 
 
 
-
 for (let i = 0 ; i < photographers.length ; i++) {
-  let name 
   if (window.location.href.includes(photographers[i].id)){
-    name = photographers[i].name
-  }}
+    contactezMoi.textContent="Contactez-moi " + photographers[i].name
+  }
+}
 
-contactezMoi.textContent="Contactez-moi " + name
 
 
 function displayModal() {
-	modal.style.display = "block";
+	modal.style.display = "block"
+  prenom.focus()
 }
 
 function closeModal() {
-    modal.style.display = "none";
+    modal.style.display = "none"
 }
 
 
@@ -64,10 +70,7 @@ modalBG.addEventListener("click", function() {closeModal()})
 
 let warningMessage = document.querySelectorAll(".warningMessage")
 
-const prenom = document.querySelector("#prenom")
-const nom = document.querySelector("#nom")
-const email = document.querySelector("#email")
-const message = document.querySelector("#votre_message")
+
 
 function goodInput (index) {
     warningMessage[index].classList.remove("block")  
@@ -154,7 +157,7 @@ function validate() {
   } 
 
 
-  // important. sans ça le bouton envoyer même à un url sans parametre
+  // important. sans ça le bouton envoyer mène à un url sans parametre
 boutonEnvoyer.addEventListener("click", function(e) {
     e.preventDefault()
     validate()
@@ -164,4 +167,52 @@ boutonEnvoyer.addEventListener("click", function(e) {
 
 
 
-// VOIR POUR METTRE UN MESSAGE DE VALIDATION QUAND ON ENVOIE LE FORMULAIRE + RED BOX !!
+// accessibilité clavier : fermer les modales
+
+function closeWithKeyboard(e) {
+  if (e.code == "Escape"){
+    closeModal()
+    closeValidation()
+    closeLightBox()
+  }
+}
+
+document.addEventListener('keydown', function(e) {
+  closeWithKeyboard(e)
+})
+
+
+// focus sur la modale de contact
+
+
+
+// https://uxdesign.cc/how-to-trap-focus-inside-modal-to-make-it-ada-compliant-6a50f9a70700 //
+
+// add all the elements inside modal which you want to make focusable
+const  focusableElements = document.querySelectorAll(".modal input, .modal textarea, #envoyer")
+
+// const firstFocusableElement = modal.querySelectorAll(focusableElements)[0]; // get first element to be focused inside modal
+// const focusableContent = modal.querySelectorAll(focusableElements);
+// const lastFocusableElement = focusableContent[focusableContent.length - 1]; // get last element to be focused inside modal
+
+
+document.addEventListener('keydown', function(e) {
+  let isTabPressed = e.key === 'Tab'
+
+  if (!isTabPressed) {
+    return
+  }
+
+  if (e.shiftKey) { // if shift key pressed for shift + tab combination
+    if (document.activeElement === prenom) {
+      envoyer.focus(); // add focus for the last focusable element
+      e.preventDefault();
+    }
+  } else { // if tab key is pressed
+    if (document.activeElement === envoyer) { // if focused has reached to last focusable element then focus first focusable element after pressing tab
+      prenom.focus(); // add focus for the first focusable element
+      e.preventDefault();
+    }
+  }
+});
+

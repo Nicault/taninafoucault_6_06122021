@@ -60,7 +60,7 @@ function displayByNameAZ(mediasPage) {
 // };
 
 // fonction à appeler + fonction like car les elements bougent /!\ il faudra aussi
-// ajouter le display lightbox ici à la fin.voir pour tout mettre dans le meme fichier ?
+// ajouter le display lightbox ici à la fin.
 
 function initSortedMedias(fonction) {
     fonction(mediasPage);

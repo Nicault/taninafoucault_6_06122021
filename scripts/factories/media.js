@@ -5,11 +5,13 @@ littleHeart.classList.add("littleHeart")
 
 const body = document.querySelector("body")
 const aside = document.createElement("aside")
+// aside.tabIndex = 0
 const likes = document.createElement("div")
 const totalLikes = document.createElement("div")
 totalLikes.classList.add("totalLikes")
 const priceDay = document.createElement("div")
 priceDay.classList.add("priceDay")
+
 body.appendChild(aside)
 
 aside.appendChild(likes)
@@ -110,6 +112,8 @@ function mediaFactory(data) {
             if (image) {
                 const img = document.createElement( 'img' );
                 img.setAttribute("src", picture)
+                img.setAttribute("tabIndex", "0")
+
                 img.classList.add("lightboxOpener")
               
 
@@ -121,6 +125,7 @@ function mediaFactory(data) {
                 src.setAttribute("src", videoMedia)
                 src.type = "video/mp4"
                 vdo.classList.add("lightboxOpener")
+                vdo.setAttribute("tabIndex", "0")
                 
                 article.appendChild(vdo);
                 vdo.appendChild(src)
