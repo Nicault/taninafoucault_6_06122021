@@ -46,7 +46,7 @@ for (let i = 0 ; i < photographers.length ; i++) {
 
 function displayModal() {
 	modal.style.display = "block"
-  prenom.focus()
+  contactezMoi.focus()
 }
 
 function closeModal() {
@@ -72,19 +72,21 @@ let warningMessage = document.querySelectorAll(".warningMessage")
 
 
 
+const inputAccessibility = document.querySelectorAll (".modal input, .modal textarea")
 
 function goodInput (index) {
     warningMessage[index].classList.remove("block")  
     warningMessage[index].classList.add("none") 
-    warningMessage[index].removeAttribute("tabIndex")  
-
+    warningMessage[index].removeAttribute("tabIndex")
+    inputAccessibility[index].setAttribute("aria-invalid","false")
     return true     
 }
 
 function wrongInput (index) {
     warningMessage[index].classList.remove("none")  
     warningMessage[index].classList.add("block")
-    warningMessage[index].setAttribute("tabIndex", "0")  
+    warningMessage[index].setAttribute("tabIndex", "0")
+    inputAccessibility[index].setAttribute("aria-invalid","true")
     return false     
 }
 
@@ -128,7 +130,7 @@ nom.addEventListener("change", function() {nameIsRight(nom,1)})
 email.addEventListener("change", function() {emailIsRight()})
 message.addEventListener("change", function() {messageIsRight()})
 
-
+const screenReaderText = document.querySelectorAll("#contact_modal .screenreader-text")
 boutonEnvoyer.addEventListener("click", function() {closeModal()})
 
 function validate() {
@@ -145,6 +147,10 @@ function validate() {
         email.value = ""
         message.value = ""
 
+        for (let i = 0 ; i < screenReaderText.length ; i++) {
+          screenReaderText[i].setAttribute("aria-hidden", "false")
+        }
+
         displayValidation()
 
     } else {
@@ -153,6 +159,11 @@ function validate() {
       nameIsRight(nom,1) 
       emailIsRight() 
       messageIsRight()
+
+      for (let i = 0 ; i < screenReaderText.length ; i++) {
+        screenReaderText[i].setAttribute("aria-hidden", "true")
+      }
+
 
       displayModal()
 
@@ -187,13 +198,14 @@ document.addEventListener('keydown', function(e) {
 
 
 // focus sur la modale de contact /!\ FONCTION KEEP FOCUS ON MODAL  
+// va de paire avec le premierElement.focus() dans le display de la modale
 
 
 
 // https://uxdesign.cc/how-to-trap-focus-inside-modal-to-make-it-ada-compliant-6a50f9a70700 //
 
 // add all the elements inside modal which you want to make focusable
-const  focusableElements = document.querySelectorAll(".modal input, .modal textarea, #envoyer, .warningMessage")
+const  focusableElements = document.querySelectorAll("header h2, .modal input, .modal textarea, #envoyer, .warningMessage")
 
 // const firstFocusableElement = modal.querySelectorAll(focusableElements)[0]; // get first element to be focused inside modal
 // const focusableContent = modal.querySelectorAll(focusableElements);
@@ -221,7 +233,7 @@ function keepFocusOnModal(e, firstElement, lastElement) {
 }
 
 document.addEventListener('keydown', function(e) {
-  keepFocusOnModal(e, prenom, boutonEnvoyer) 
+  keepFocusOnModal(e, contactezMoi, boutonEnvoyer) 
 })
 
 // focus sur la modale de validation

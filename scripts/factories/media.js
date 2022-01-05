@@ -112,6 +112,7 @@ function mediaFactory(data) {
             if (image) {
                 const img = document.createElement( 'img' );
                 img.setAttribute("src", picture)
+                img.setAttribute("alt", title)
                 img.setAttribute("tabIndex", "0")
 
                 img.classList.add("lightboxOpener")

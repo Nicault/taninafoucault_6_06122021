@@ -10,6 +10,7 @@ const lightBoxMediaTitle = document.createElement("p")
 
 lightBox.classList.add("lightBox")
 lightBox.setAttribute("tabIndex", "-1")
+lightBox.setAttribute("role", "dialog")
 exit.src="assets/icons/closeRed.svg" 
 exit.classList.add("exit")
 exit.setAttribute("id", "croixLightbox")

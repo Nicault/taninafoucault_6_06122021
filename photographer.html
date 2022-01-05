@@ -10,7 +10,7 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" alt="Logo Fisheye"/>
+      <img src="assets/images/logo.png" class="logo" alt="Logo Fisheye - Page d'accueil"/>
     </header>
     <main id="main">
       <div class="photograph-header">
@@ -21,24 +21,24 @@
       
     </section>
     <div id="contact_modal">
-			<div class="modal" tabindex="-1">
+			<div class="modal" tabindex="-1" role=dialog>
 				<header>
-          <h2>Contactez-moi</h2>
+          <h2 tabindex="0">Contactez-moi</h2>
           <img src="assets/icons/close.svg" id="croixModale" onclick="closeModal()" alt="fermer"/>
         </header>
 				<form>
 					<div>
-						<label for="prenom">Prénom</label>
-						<input type="text" id="prenom" />
+						<label for="prenom">Prénom<span class="screenreader-text"> : veuillez saisir votre prénom</span></label>
+						<input type="text" id="prenom" aria-required="true" aria-invalid="false"/>
             <p class="warningMessage none">Veuillez saisir votre prénom</p>
-            <label for="nom">Nom</label>
-            <input type="text" id="nom"/>
+            <label for="nom">Nom<span class="screenreader-text"> : veuillez saisir votre nom</span></label>
+            <input type="text" id="nom" aria-required="true" aria-invalid="false"/>
             <p class="warningMessage none">Veuillez saisir votre nom</p>
-            <label for="email">Email</label>
-            <input type="text" id="email"/>
+            <label for="email">Email<span class="screenreader-text"> : veuillez saisir votre adresse mail</span></label>
+            <input type="text" id="email" aria-required="true" aria-invalid="false"/>
             <p class="warningMessage none">Veuillez saisir une adresse mail valide</p>
-            <label for="votre_message">Votre message</label>
-            <textarea id="votre_message"></textarea>
+            <label for="votre_message">Votre message<span class="screenreader-text"> : veuillez saisir votre message</span></label>
+            <textarea id="votre_message" aria-required="true" aria-invalid="false"></textarea>
             <p class="warningMessage none">Veuillez saisir votre message</p>
 					</div>
           <button type="submit" class="contact_button" id="envoyer">Envoyer</button>
@@ -46,7 +46,7 @@
 			</div>
 		</div>
     <div class="groupe_validation">
-      <div class="modal modalValidation" tabindex="-1">
+      <div class="modal modalValidation" tabindex="-1" role=dialog>
         <header>
         <img src="assets/icons/close.svg" id="croixValidation" onclick="closeValidation()" alt="fermer"/>
       </header>

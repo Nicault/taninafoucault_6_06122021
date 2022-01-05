@@ -10,7 +10,7 @@ function photographerFactory(data) {
         lien.tabIndex = -1
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture)
-        // img.setAttribute("alt", name)
+        img.setAttribute("alt", name + " - Page de " + name)
         const h2 = document.createElement( 'h2' );
 
         h2.innerHTML = "<span class='screenreader-text'>Nom du photographe : </span>" + name
