@@ -38,7 +38,8 @@ lightBox.appendChild(lightBoxMediaTitle)
 
 function displayLightBox() {
     lightBoxScreen.style.display = "block";
-    lightBoxMedia.focus()    
+    lightBoxMedia.focus()
+    return true    
   }
   
   function closeLightBox() {     
@@ -95,12 +96,13 @@ function displayPreviousMedia(currentMediaIndex) {
 
 function navigateBetweenMedias(currentMediaIndex) {
 
+
     chevronR.addEventListener("click", function() {
         currentMediaIndex = displayNextMedia(currentMediaIndex)
     })
 
     document.addEventListener("keydown", function(e) {
-        if (e.code == "ArrowRight") {
+        if (lightBoxScreen.style.display == "block" && e.code == "ArrowRight") {
             currentMediaIndex = displayNextMedia(currentMediaIndex)            
         }
     })
@@ -110,7 +112,7 @@ function navigateBetweenMedias(currentMediaIndex) {
     })
 
     document.addEventListener("keydown", function(e) {
-        if (e.code == "ArrowLeft") {
+        if (lightBoxScreen.style.display == "block" && e.code == "ArrowLeft") {
             currentMediaIndex = displayPreviousMedia(currentMediaIndex)
     
         }
