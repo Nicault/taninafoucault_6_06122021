@@ -30,8 +30,8 @@ function photographerHeader(data) {
         const header = document.querySelector(".photograph-header")
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture)
-        const h2 = document.createElement( 'h2' );
-        h2.textContent = name;
+        const h1 = document.createElement( 'h1' );
+        h1.textContent = name;
         const cityCountry = document.createElement("p")
         cityCountry.classList.add("cityCountry")
         cityCountry.textContent = city + ", " + country
@@ -45,7 +45,7 @@ function photographerHeader(data) {
         const button = document.querySelector(".photograph-header button")
 
         header.appendChild(div)
-        div.appendChild(h2)
+        div.appendChild(h1)
         div.appendChild(cityCountry)
         div.appendChild(quote)
         header.appendChild(img)

@@ -7,32 +7,35 @@ function photographerFactory(data) {
         const article = document.createElement( 'article' );
         const lien = document.createElement('a')
         lien.href = "photographer.html?id=" + id
+        lien.tabIndex = -1
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture)
-        img.setAttribute("alt", name)
+        // img.setAttribute("alt", name)
         const h2 = document.createElement( 'h2' );
-        h2.textContent = name;
 
-        const div = document.createElement("div")
+        h2.innerHTML = "<span class='screenreader-text'>Nom du photographe : </span>" + name
+        article.setAttribute("tabIndex", "0")
+        const articleTxt = document.createElement("div")
+        articleTxt.classList.add("articleTxt")
         const cityCountry = document.createElement("p")
         cityCountry.classList.add("cityCountry")
-        cityCountry.textContent = city + ", " + country
+        cityCountry.innerHTML = "<span class='screenreader-text'>Localisation du photographe : </span>" + city + ", " + country
         const quote = document.createElement("p")
         quote.classList.add=("quote")
-        quote.textContent = tagline
+        quote.innerHTML = "<span class='screenreader-text'>Citation du photographe : </span>" + tagline
         const rate = document.createElement("p")
         rate.classList.add=("rate")
-        rate.textContent = price + "€/jour"
+        rate.innerHTML = "<span class='screenreader-text'>Prix de la prestation : </span>" + price + "€/jour"
 
 
         article.appendChild(lien)
         lien.appendChild(img);
         lien.appendChild(h2);
-        article.appendChild(div)
+        article.appendChild(articleTxt)
 
-        div.appendChild(cityCountry)
-        div.appendChild(quote)
-        div.appendChild(rate)
+        articleTxt.appendChild(cityCountry)
+        articleTxt.appendChild(quote)
+        articleTxt.appendChild(rate)
 
         return (article);
     }

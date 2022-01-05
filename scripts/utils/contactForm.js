@@ -14,7 +14,7 @@ const fermer = document.querySelector(".modalValidation .closeButton")
 
 function displayValidation() {
   groupeValidation.style.display = "flex";
-  fermer.focus()    
+  validationText.focus()    
 }
 
 function closeValidation() {
@@ -72,15 +72,19 @@ let warningMessage = document.querySelectorAll(".warningMessage")
 
 
 
+
 function goodInput (index) {
     warningMessage[index].classList.remove("block")  
     warningMessage[index].classList.add("none") 
+    warningMessage[index].removeAttribute("tabIndex")  
+
     return true     
 }
 
 function wrongInput (index) {
     warningMessage[index].classList.remove("none")  
-    warningMessage[index].classList.add("block")  
+    warningMessage[index].classList.add("block")
+    warningMessage[index].setAttribute("tabIndex", "0")  
     return false     
 }
 
@@ -182,14 +186,14 @@ document.addEventListener('keydown', function(e) {
 })
 
 
-// focus sur la modale de contact
+// focus sur la modale de contact /!\ FONCTION KEEP FOCUS ON MODAL  
 
 
 
 // https://uxdesign.cc/how-to-trap-focus-inside-modal-to-make-it-ada-compliant-6a50f9a70700 //
 
 // add all the elements inside modal which you want to make focusable
-const  focusableElements = document.querySelectorAll(".modal input, .modal textarea, #envoyer")
+const  focusableElements = document.querySelectorAll(".modal input, .modal textarea, #envoyer, .warningMessage")
 
 // const firstFocusableElement = modal.querySelectorAll(focusableElements)[0]; // get first element to be focused inside modal
 // const focusableContent = modal.querySelectorAll(focusableElements);
@@ -220,3 +224,11 @@ document.addEventListener('keydown', function(e) {
   keepFocusOnModal(e, prenom, boutonEnvoyer) 
 })
 
+// focus sur la modale de validation
+
+const validationText = document.querySelector(".validationText")
+validationText.setAttribute("tabIndex", "0")
+
+document.addEventListener('keydown', function(e) {
+  keepFocusOnModal(e, validationText, fermer) 
+})

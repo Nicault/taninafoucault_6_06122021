@@ -5,7 +5,7 @@
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
-    margin: 0 100px;
+    /* margin: 0 100px; */
 }
 
 .contact_button {
@@ -149,34 +149,44 @@ form input {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom:  50px;
+    margin: auto;
+    margin-bottom: 50px;
+    width: 1200px;
 }
 
 
+
 .medias_section{
+    width: 1275px;
+    overflow: hidden;
     height: auto;
-    margin : 0 100px 20px 100px;
-    /* display: grid;
+    margin: auto;
+    /* margin : 0 100px 20px 100px; */
+    display: grid;
     grid-template-columns: repeat(3, 33%);
-    justify-content: center; */
+    justify-content: center;
     /* gap: 20px; */
     /* grid-row: auto; */
-    display: flex;
+    
+    
+    /* display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-between; */
 }
 
 .medias_section article {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    margin-bottom: 30px;
+    margin-bottom: 35px;
+    width: 350px;
+    margin-right: 75px;
 }
 
 .medias_section img, .medias_section video {
     object-fit: cover;
-    height: 330px;
-    width: 330px;
+    height: 350px;
+    width: 350px;
     border-radius: 5px;
 }
 
@@ -259,7 +269,7 @@ aside div:first-of-type {
     height: 48px;
     width: 100%;
     display: flex;
-    margin: -20px 100px 30px 100px;
+    margin-bottom: 30px;
 }
 
 .textTrieur{
@@ -426,6 +436,7 @@ article img, article video {
     bottom: 10%;
     left: 50%;
     transform: translate(-50%, 50%);
+    padding-left: 10px;
 }
 
 .lightBox p{

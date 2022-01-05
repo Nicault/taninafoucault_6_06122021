@@ -159,8 +159,3 @@ function mediaFactory(data) {
     return { title, id, photographerId, image, likes, date, price, video, getMediaCardDOM }
 }
 
-
-
-
-
-// PROBLEME AVEC LE TOTAL LIKES QUI SADDITIONNE A CHAQUE SORTED PAGE

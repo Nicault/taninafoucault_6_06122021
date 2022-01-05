@@ -19,8 +19,8 @@ p {
 
 body {
     margin: 0 auto;
-    max-width: 1300px;
-    min-width: 900px;
+    width: 1200px;
+    overflow-x: hidden;
 }
 
 
@@ -34,32 +34,51 @@ header {
 
 h1 {
     color: #901C1C;
-    margin-right: 100px;
+    /* margin-right: 100px; */
 }
+
+.screenreader-text{
+    position: absolute;
+   left: -10000em;
+   top: auto;
+   width: 1px;
+   height: 1px;
+   overflow: hidden;
+}
+
 
 .logo {
     height: 50px;
-    margin-left: 100px;
+    /* margin-left: 100px; */
+    /* padding-left: 10px; */
 }
 
 .photographer_section {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
-    margin-top: 100px;
+    margin: auto;
+    width: 1650px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 60px;
+    height: 80vh;
 }
 
-.photographer_section article, .photographer_section article a {
-    justify-self: center;
+.photographer_section article{
+    transform: translateX(-50px);
     display: flex;
     justify-content: center;
-    align-items: center;
     flex-direction: column;
+    width: 300px;
+    margin-right: 200px;
+}
+
+.photographer_section article a, .photographer_section article div, .photographer_section article h2 {
+    text-align: center;
+    width: 300px;
 }
 
 .photographer_section article h2, .photograph-header h2 {
     color: #D3573C;
-    font-size: 36px;
+    font-size: 34px;
     margin-bottom: 5px;
 }
 
