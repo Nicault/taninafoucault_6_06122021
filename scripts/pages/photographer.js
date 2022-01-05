@@ -3,20 +3,11 @@ const header = document.querySelector("header")
 const lienHomePage = document.createElement("a")
 lienHomePage.href = "index.html"
 
+
+// remet les elements dans l'ordre
+
 header.replaceChild(lienHomePage, logo)
 lienHomePage.appendChild(logo)
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -68,14 +59,11 @@ async function getPhotographers() {
 }
 
 async function displayDataHeader(photographers) {
-    // const photographHeader = document.querySelector(".photograph-header");
 
     for (let i = 0 ; i < photographers.length ; i++) {
         if (window.location.href.includes(photographers[i].id)){
             const photographerModel = photographerHeader(photographers[i]);
             photographerModel.getUserCardDOM();
-            // const userCardDOM = photographerModel.getUserCardDOM();
-            // photographHeader.appendChild(userCardDOM);
         }
     }
     
@@ -88,7 +76,6 @@ async function initHeader() {
 };
 
 initHeader();
-
 
 
 

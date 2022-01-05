@@ -42,10 +42,3 @@ function photographerFactory(data) {
     return { name, id, city, country, tagline, price, picture, getUserCardDOM }
 }
 
-// crée l'element dans le dom avec le nom et l'image associée
-
-// fabrique l'article photographer ayant pour constantes data qui correspond au duo nom + portrait
-// on crée ensuite l'article puis l'image et le header qu'on lui append child
-// la première fonction nous renvoie le resultat de la deuxieme fonction
-// on va cherche l'image dans le dossier image mais où va t on chercher les name ?? reponse : dans le tableau
-// photographers du doc index.js

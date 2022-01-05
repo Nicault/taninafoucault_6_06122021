@@ -29,14 +29,14 @@ function displayByLikes90(mediasPage) {
 
 // };
 
-//recent
+//les plus recent
 
 function displayByDate90(mediasPage) {
 
     mediasPage.sort(function(a, b){return b.date.replaceAll("-", "") - a.date.replaceAll("-", "")})
 };
 
-// old
+//les plus anciens 
 
 // function displayByDate09(mediasPage) {
 
@@ -44,14 +44,14 @@ function displayByDate90(mediasPage) {
 
 // };
 
-// a - z
+//alpha a - z
 
 function displayByNameAZ(mediasPage) {
 
     mediasPage.sort(function(a, b){return a.title.localeCompare(b.title)})
 };
 
-// z - a
+//alpha z - a
 
 // function displayByNameZA(mediasPage) {
 
@@ -59,8 +59,8 @@ function displayByNameAZ(mediasPage) {
 
 // };
 
-// fonction à appeler + fonction like car les elements bougent /!\ il faudra aussi
-// ajouter le display lightbox ici à la fin.
+
+// fonction à appeler + fonction like + display lightbox car les elements bougent après le tri /!\ 
 
 function initSortedMedias(fonction) {
     fonction(mediasPage);
@@ -78,6 +78,7 @@ date.addEventListener("click", function() {initSortedMedias(displayByDate90)})
 titre.addEventListener("click", function() {initSortedMedias(displayByNameAZ)})
 
 
+// changement de l'affichage du menu de tri
 
 let pdt = [pop, date, titre]
 

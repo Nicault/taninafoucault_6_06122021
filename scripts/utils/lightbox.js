@@ -1,3 +1,4 @@
+// création de la lightbox
 const lightBoxScreen = document.createElement("section")
 const lightBox = document.createElement("div")
 const lightBoxBG = document.createElement("div")
@@ -36,10 +37,10 @@ lightBox.appendChild(lightBoxMediaTitle)
 
 
 
+
 function displayLightBox() {
     lightBoxScreen.style.display = "block";
     lightBoxMedia.focus()
-    return true    
   }
   
   function closeLightBox() {     
@@ -161,7 +162,3 @@ document.addEventListener('keydown', function(e) {
 // puis focus sur l'image et le titre
 // donne l'impression d'un double focus car le contenu prend la taille du contenant
 // reflechir à une solution
-
-// il suffirait d'enlever le tabindex de l'image afin d'ignorer le focus de l'image
-// mais le focus de l'image semble important... à voir
-

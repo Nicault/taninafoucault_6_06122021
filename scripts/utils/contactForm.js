@@ -34,7 +34,7 @@ modalValidationBG.addEventListener("click", function() {closeValidation()})
 
 
 
-
+// ajoute le nom du photographe de la page dans la modale
 
 for (let i = 0 ; i < photographers.length ; i++) {
   if (window.location.href.includes(photographers[i].id)){
@@ -66,7 +66,7 @@ modal.appendChild(modalBG)
 modalBG.addEventListener("click", function() {closeModal()})
 
 
-
+// messages d'alerte en cas de mauvais input
 
 let warningMessage = document.querySelectorAll(".warningMessage")
 
@@ -132,6 +132,8 @@ message.addEventListener("change", function() {messageIsRight()})
 
 const screenReaderText = document.querySelectorAll("#contact_modal .screenreader-text")
 boutonEnvoyer.addEventListener("click", function() {closeModal()})
+
+
 
 function validate() {
     if ( nameIsRight(prenom, 0) 

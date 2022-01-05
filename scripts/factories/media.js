@@ -1,11 +1,12 @@
 const littleHeart = document.createElement("i")
 littleHeart.setAttribute("class", "fas fa-heart")
 littleHeart.classList.add("littleHeart")
-// cree le aside
+// création du aside (likes + price)
 
 const body = document.querySelector("body")
 const aside = document.createElement("aside")
-// aside.tabIndex = 0
+// voir si c'est important de mettre un tabindex sur le aside
+aside.tabIndex = 0
 const likes = document.createElement("div")
 const totalLikes = document.createElement("div")
 totalLikes.classList.add("totalLikes")
@@ -22,7 +23,7 @@ aside.appendChild(priceDay)
 
 
 
-
+// création de menu de tri
 
 const mediaSection = document.querySelector(".medias_section")
 const trieur = document.createElement("div")
@@ -73,12 +74,6 @@ body.insertBefore(trieur, mediaSection)
 
 
 
-
-
-
-// let likesCount = 0
-
-
 function mediaFactory(data) {
     const { title, id, photographerId, image, likes, date, price, video } = data;
 
@@ -89,7 +84,6 @@ function mediaFactory(data) {
 
     function getMediaCardDOM() {
 
-            // const mediaSection = document.querySelector(".medias_section")
             const article = document.createElement( 'article' );
             const legende = document.createElement("div")
             const stats = document.createElement("div")
@@ -107,7 +101,6 @@ function mediaFactory(data) {
             stats.appendChild(jaime)
             stats.appendChild(likeButton)            
             likeButton.appendChild(iconHeart)
-            // mediaSection.appendChild(article)
 
             if (image) {
                 const img = document.createElement( 'img' );
@@ -136,22 +129,9 @@ function mediaFactory(data) {
             article.appendChild(legende)
 
             const h2 = document.createElement( 'h2' );
-            h2.textContent = title
-            // const elmtDate = document.createElement("div")
-            // elmtDate.classList.add("date")
-
-            // elmtDate.textContent = date
-            
+            h2.textContent = title          
             legende.appendChild(h2)
-            // legende.appendChild(elmtDate)
             legende.appendChild(stats)
-
-            // const totalLikes = document.querySelector(".totalLikes")
-            
-
-            // totalLikes.textContent = (likesCount += likes)
-        
-
 
             return (article);
             
