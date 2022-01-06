@@ -369,7 +369,7 @@ article img, article video {
     position: fixed;
     top: 10vh;
     left: 10vw;
-    height: 80vh;
+    height: 85vh;
     width: 80vw;
     background-color: white;
     z-index: 10;
@@ -417,17 +417,12 @@ article img, article video {
     height: 30px;
 }
 
-.lightBoxMedia img{
+.lightBoxMedia img, .lightBoxMedia video{
     object-fit: contain;
     /* height: 100%; */
     width: 100%;
 }
 
-.lightBoxMedia video{
-    object-fit: contain;
-    width: 100%;
-
-}
 
 .lightBoxMediaTitle{
     position: absolute;
