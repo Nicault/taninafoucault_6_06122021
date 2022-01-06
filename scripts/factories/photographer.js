@@ -25,7 +25,8 @@ function photographerFactory(data) {
         quote.innerHTML = "<span class='screenreader-text'>Citation du photographe : </span>" + tagline
         const rate = document.createElement("p")
         rate.classList.add=("rate")
-        rate.innerHTML = "<span class='screenreader-text'>Prix de la prestation : </span>" + price + "€/jour"
+        rate.innerHTML = "<span class='screenreader-text'>Prix de la prestation : </span>" 
+                        + price + "€ <span aria-hidden = 'true'>/</span><span class='screenreader-text'>par </span>jour"
 
 
         article.appendChild(lien)

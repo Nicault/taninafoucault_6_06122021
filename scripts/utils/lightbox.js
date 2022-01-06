@@ -18,8 +18,12 @@ exit.setAttribute("id", "croixLightbox")
 lightBoxBG.classList.add("modalBG")
 chevronR.classList.add("fas")
 chevronR.classList.add("fa-chevron-right")
+chevronR.setAttribute("tabIndex", "0")
+chevronR.setAttribute("aria-label","élément suivant")
 chevronL.classList.add("fas" )
 chevronL.classList.add("fa-chevron-left")
+chevronL.setAttribute("tabIndex", "0")
+chevronL.setAttribute("aria-label","élément précédent")
 lightBoxMedia.classList.add("lightBoxMedia")
 lightBoxMedia.tabIndex = 0
 lightBoxMediaTitle.classList.add("lightBoxMediaTitle")
@@ -29,10 +33,11 @@ body.appendChild(lightBoxScreen)
 lightBoxScreen.appendChild(lightBox)
 lightBoxScreen.appendChild(lightBoxBG)
 lightBox.appendChild(exit)
-lightBox.appendChild(chevronL)
-lightBox.appendChild(chevronR)
 lightBox.appendChild(lightBoxMedia)
 lightBox.appendChild(lightBoxMediaTitle)
+lightBox.appendChild(chevronR)
+lightBox.appendChild(chevronL)
+
 
 
 
@@ -66,10 +71,10 @@ function displayCurrentMedia(indice) {
     lightBoxMediaTitle.textContent = mediasPage[indice].title
 
     if (mediasPage[indice].image){
-        lightBoxMedia.innerHTML = "<img src='assets/medias/" + mediasPage[indice].image + "' tabIndex='0'>"
+        lightBoxMedia.innerHTML = "<img src='assets/medias/" + mediasPage[indice].image + "' tabIndex='0' alt='Description de : " + mediasPage[indice].title + "'>"
     }
     else {
-        lightBoxMedia.innerHTML = "<video controls> <source src='assets/medias/" + mediasPage[indice].video + "'> </video>"
+        lightBoxMedia.innerHTML = "<video controls> <source src='assets/medias/" + mediasPage[indice].video + "'><p>Description de : " + mediasPage[indice].title + " </p></video>"
     }
 }
 
@@ -97,21 +102,33 @@ function displayPreviousMedia(currentMediaIndex) {
 
 function navigateBetweenMedias(currentMediaIndex) {
 
-
+    // suivant au click
     chevronR.addEventListener("click", function() {
         currentMediaIndex = displayNextMedia(currentMediaIndex)
     })
-
+    // suivant selection clavier + Entrée
+    chevronR.addEventListener("keydown", function(e) {
+        if (e.code == "Enter") {
+            currentMediaIndex = displayNextMedia(currentMediaIndex)
+        }
+    })
+    // suivant flèches
     document.addEventListener("keydown", function(e) {
         if (lightBoxScreen.style.display == "block" && e.code == "ArrowRight") {
             currentMediaIndex = displayNextMedia(currentMediaIndex)            
         }
     })
-
+    // precedent au click
     chevronL.addEventListener("click", function() {
         currentMediaIndex = displayPreviousMedia(currentMediaIndex)
     })
-
+    // precedent selection clavier + Entrée
+    chevronL.addEventListener("keydown", function(e) {
+        if (e.code == "Enter") {
+            currentMediaIndex = displayPreviousMedia(currentMediaIndex)
+        }
+    })
+    // precedent fleches
     document.addEventListener("keydown", function(e) {
         if (lightBoxScreen.style.display == "block" && e.code == "ArrowLeft") {
             currentMediaIndex = displayPreviousMedia(currentMediaIndex)
@@ -152,7 +169,7 @@ displayLightboxMedias()
 
 
 document.addEventListener('keydown', function(e) {
-    keepFocusOnModal(e, lightBoxMedia, lightBoxMediaTitle) 
+    keepFocusOnModal(e, lightBoxMedia, chevronL) 
   })
 
 

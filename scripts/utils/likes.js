@@ -1,12 +1,17 @@
 // LIKES
-
-let likesCount = 0
+let likesNumber = document.querySelectorAll(".likesNumber")
+let likesCount
 
 function total () {
-for (let i = 0 ; i < mediasPage.length ; i++) {
-    likesCount += mediasPage[i].likes
+    likesCount = 0
+
+    for (let i = 0 ; i < likesNumber.length ; i++) {
+        likesCount += parseInt(likesNumber[i].textContent)
+        console.log(likesCount)
+    }
+    totalLikes.innerHTML = "<span class='screenreader-text'>Nombre total de Likes : </span>" + likesCount
+
 }
-    totalLikes.textContent = likesCount}
 
 total()
 
@@ -20,16 +25,20 @@ function like() {
 
         likeButton[i].addEventListener("click", function() {
             if (iconHeart[i].classList.contains("far")){
+            likeButton[i].setAttribute("aria-pressed", "true")
             likesNumber[i].textContent++
-            totalLikes.textContent++
+            likesCount++
             iconHeart[i].classList.remove("far")
             iconHeart[i].classList.add("fas")
             } else {
+            likeButton[i].setAttribute("aria-pressed", "false")
             likesNumber[i].textContent --
-            totalLikes.textContent --
+            likesCount--
             iconHeart[i].classList.add("far")
             iconHeart[i].classList.remove("fas")
             }
+            total()
+
         })
 }}
 like()

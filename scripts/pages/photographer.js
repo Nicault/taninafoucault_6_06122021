@@ -21,16 +21,19 @@ function photographerHeader(data) {
         const header = document.querySelector(".photograph-header")
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture)
+        img.setAttribute("alt", name)
+        img.setAttribute("tabindex", "0")
         const h1 = document.createElement( 'h1' );
-        h1.textContent = name;
+        h1.innerHTML = "<span class='screenreader-text'>Nom du photographe : </span>" + name
         const cityCountry = document.createElement("p")
         cityCountry.classList.add("cityCountry")
-        cityCountry.textContent = city + ", " + country
+        cityCountry.innerHTML = "<span class='screenreader-text'>Localisation du photographe : </span>" + city + ", " + country
         const div = document.createElement("div")
         div.classList.add("text")
+        div.setAttribute("tabIndex", "0")
         const quote = document.createElement("p")
         quote.classList.add("quote")
-        quote.textContent = tagline
+        quote.innerHTML = "<span class='screenreader-text'>Citation du photographe : </span>" + tagline
 
 
         const button = document.querySelector(".photograph-header button")
@@ -47,7 +50,8 @@ function photographerHeader(data) {
 
         
         const priceDay = document.querySelector(".priceDay")
-        priceDay.textContent = price + "€/jour"
+        priceDay.innerHTML = "<span class='screenreader-text'>Prix de la prestation : </span>" 
+        + price + "€ <span aria-hidden = 'true'>/</span><span class='screenreader-text'>par </span>jour"
     }
     return { name, id, city, country, tagline, price, picture, getUserCardDOM }
 }
