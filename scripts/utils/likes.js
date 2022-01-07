@@ -1,3 +1,4 @@
+
 // LIKES
 let likesNumber = document.querySelectorAll(".likesNumber")
 let likesCount
@@ -7,7 +8,6 @@ function total () {
 
     for (let i = 0 ; i < likesNumber.length ; i++) {
         likesCount += parseInt(likesNumber[i].textContent)
-        console.log(likesCount)
     }
     totalLikes.innerHTML = "<span class='screenreader-text'>Nombre total de Likes : </span>" + likesCount
 

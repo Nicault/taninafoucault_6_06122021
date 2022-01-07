@@ -1,12 +1,3 @@
-{/* <label for="menu_destination_liste">Navigation</label> 
-<select name="menu_destination" id="menu_destination_liste"> 
-     <option value="http://www.monsite.net/accueil.html">Accueil</option> 
-     <option value="http://www.monsite.net/apropos.html">Qui sommes-nous ?</option> 
-     <option value="http://www.monsite.net/contact.html">Nous contacter</option> 
-     <option value="http://www.monsite.net/plan.html">Plan du site</option> 
-</select> */}
-
-
 // création de menu de tri
 
 const trieur = document.createElement("div")
@@ -29,20 +20,24 @@ chevron.classList.add("fa-chevron-down")
 const triListe = document.createElement("div")
 triListe.setAttribute("role", "listbox")
 triListe.classList.add("triListe")
+triListe.setAttribute("tabIndex", "-1")
 const pop = document.createElement("a")
 pop.setAttribute("id", "pop")
 pop.href = "#"
 pop.textContent = "Popularité"
+pop.setAttribute("aria-label","Popularité")
 pop.setAttribute("role", "listbox")
 const date = document.createElement("a")
 date.setAttribute("id", "date")
 date.href = "#"
 date.textContent = "Date"
+date.setAttribute("aria-label","Date")
 date.setAttribute("role", "listbox")
 const titre = document.createElement("a")
 titre.setAttribute("id", "titre")
 titre.href = "#"
 titre.textContent = "Titre"
+titre.setAttribute("aria-label","Titre")
 titre.setAttribute("role", "listbox")
 
 body.appendChild(trieur)
@@ -176,6 +171,7 @@ triButton.addEventListener("click", function(){
 
 
 
+
 for (let i = 0 ; i < pdt.length ; i++) {
     pdt[i].addEventListener("click", function(e){
         e.stopPropagation()
@@ -183,9 +179,6 @@ for (let i = 0 ; i < pdt.length ; i++) {
         triStyle.textContent = pdt[i].textContent
         triButtonTextContent = pdt[i].textContent
         triButton.setAttribute("aria-activedescendant", triButtonTextContent)
-
         })
 }
-
-
 

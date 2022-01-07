@@ -23,10 +23,6 @@ function closeValidation() {
 
 closeValidation()
 
-
-
-
-
 const modalValidationBG = document.createElement("div")
 modalValidationBG.classList.add("modalBG")
 groupeValidation.appendChild(modalValidationBG)
@@ -42,8 +38,6 @@ for (let i = 0 ; i < photographers.length ; i++) {
   }
 }
 
-
-
 function displayModal() {
 	modal.style.display = "block"
   contactezMoi.focus()
@@ -52,10 +46,6 @@ function displayModal() {
 function closeModal() {
     modal.style.display = "none"
 }
-
-
-
-
 
 
 
@@ -131,8 +121,6 @@ email.addEventListener("change", function() {emailIsRight()})
 message.addEventListener("change", function() {messageIsRight()})
 
 const screenReaderText = document.querySelectorAll("#contact_modal .screenreader-text")
-boutonEnvoyer.addEventListener("click", function() {closeModal()})
-
 
 
 function validate() {
@@ -141,7 +129,8 @@ function validate() {
       && emailIsRight() 
       && messageIsRight()) {
 
-        console.log("prénom : " + prenom.value + "\n" + "nom : " + nom.value + "\n" + "email : " + email.value + "\n" + "message : " + message.value)  
+        console.log("prénom : " + prenom.value + "\n" + "nom : " + nom.value + "\n" + 
+                              "email : " + email.value + "\n" + "message : " + message.value)  
 
 
         prenom.value = ""
@@ -152,24 +141,19 @@ function validate() {
         for (let i = 0 ; i < screenReaderText.length ; i++) {
           screenReaderText[i].setAttribute("aria-hidden", "false")
         }
-
+        closeModal()
         displayValidation()
 
     } else {
   
       nameIsRight(prenom, 0) 
-      nameIsRight(nom,1) 
+      nameIsRight(nom, 1) 
       emailIsRight() 
       messageIsRight()
 
       for (let i = 0 ; i < screenReaderText.length ; i++) {
         screenReaderText[i].setAttribute("aria-hidden", "true")
       }
-
-
-      displayModal()
-
-        
     }
   } 
 
@@ -179,8 +163,6 @@ boutonEnvoyer.addEventListener("click", function(e) {
     e.preventDefault()
     validate()
 })
-
-
 
 
 
@@ -208,10 +190,6 @@ document.addEventListener('keydown', function(e) {
 
 // add all the elements inside modal which you want to make focusable
 const  focusableElements = document.querySelectorAll("header h2, .modal input, .modal textarea, #envoyer, .warningMessage")
-
-// const firstFocusableElement = modal.querySelectorAll(focusableElements)[0]; // get first element to be focused inside modal
-// const focusableContent = modal.querySelectorAll(focusableElements);
-// const lastFocusableElement = focusableContent[focusableContent.length - 1]; // get last element to be focused inside modal
 
 function keepFocusOnModal(e, firstElement, lastElement) {
   let isTabPressed = e.key === 'Tab'

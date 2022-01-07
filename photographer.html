@@ -15,16 +15,16 @@
     </header>
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()" role="dialog" aria-labelledby="Contactez-moi"><span class="screenreader-text">Ouvrir la modale :</span>Contactez-moi</button>
+        <button class="contact_button" onclick="displayModal()" aria-labelledby="modal-heading"><span class="screenreader-text">Ouvrir la modale :</span>Contactez-moi</button>
       </div>
     </main>
     <section class = "medias_section">
       
     </section>
     <div id="contact_modal">
-			<div class="modal" tabindex="-1" role=dialog>
+			<div class="modal" tabindex="-1" role=dialog aria-modal="true" aria-labelledby="modal-heading">
 				<header>
-          <h2 tabindex="0">Contactez-moi</h2>
+          <h2 tabindex="0" id="modal-heading">Contactez-moi</h2>
           <img src="assets/icons/close.svg" id="croixModale" onclick="closeModal()" alt="fermer"/>
         </header>
 				<form>
@@ -40,14 +40,14 @@
             <p class="warningMessage none">Veuillez saisir une adresse mail valide</p>
             <label for="votre_message">Votre message<span class="screenreader-text"> : veuillez saisir votre message</span></label>
             <textarea id="votre_message" aria-required="true" aria-invalid="false"></textarea>
-            <p class="warningMessage none">Veuillez saisir votre message</p>
+            <p class="warningMessage none">Veuillez saisir votre au moins 5 caratères</p>
 					</div>
           <button type="submit" class="contact_button" id="envoyer">Envoyer</button>
 				</form>
 			</div>
 		</div>
     <div class="groupe_validation">
-      <div class="modal modalValidation" tabindex="-1" role=dialog>
+      <div class="modal modalValidation" tabindex="-1" role=dialog aria-modal="true" aria-label="modal-validation">
         <header>
         <img src="assets/icons/close.svg" id="croixValidation" onclick="closeValidation()" alt="fermer"/>
       </header>

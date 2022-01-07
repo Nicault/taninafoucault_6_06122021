@@ -12,6 +12,7 @@ const lightBoxMediaTitle = document.createElement("p")
 lightBox.classList.add("lightBox")
 lightBox.setAttribute("tabIndex", "-1")
 lightBox.setAttribute("role", "dialog")
+lightBox.setAttribute("aria-label", "Aperçu des éléments")
 exit.src="assets/icons/closeRed.svg" 
 exit.classList.add("exit")
 exit.setAttribute("id", "croixLightbox")
@@ -20,10 +21,14 @@ chevronR.classList.add("fas")
 chevronR.classList.add("fa-chevron-right")
 chevronR.setAttribute("tabIndex", "0")
 chevronR.setAttribute("aria-label","élément suivant")
+chevronR.innerHTML = "<span class='screenreader-text'>élément suivant</span>"
+
 chevronL.classList.add("fas" )
 chevronL.classList.add("fa-chevron-left")
 chevronL.setAttribute("tabIndex", "0")
 chevronL.setAttribute("aria-label","élément précédent")
+chevronL.innerHTML = "<span class='screenreader-text'>élément précédent</span>"
+
 lightBoxMedia.classList.add("lightBoxMedia")
 lightBoxMedia.tabIndex = 0
 lightBoxMediaTitle.classList.add("lightBoxMediaTitle")
@@ -42,8 +47,8 @@ lightBox.appendChild(chevronL)
 
 
 
-
 function displayLightBox() {
+
     lightBoxScreen.style.display = "block";
     lightBoxMedia.focus()
   }
@@ -71,33 +76,17 @@ function displayCurrentMedia(indice) {
     lightBoxMediaTitle.textContent = mediasPage[indice].title
 
     if (mediasPage[indice].image){
-        lightBoxMedia.innerHTML = "<img src='assets/medias/" + mediasPage[indice].image + "' tabIndex='0' alt='Description de : " + mediasPage[indice].title + "'>"
+        lightBoxMedia.innerHTML = "<img src='assets/medias/" + mediasPage[indice].image + 
+                                "' tabIndex='0' alt='Description de : " + mediasPage[indice].title + "'>"
     }
     else {
-        lightBoxMedia.innerHTML = "<video controls> <source src='assets/medias/" + mediasPage[indice].video + "'><p>Description de : " + mediasPage[indice].title + " </p></video>"
+        lightBoxMedia.innerHTML = "<video controls> <source src='assets/medias/" + mediasPage[indice].video + 
+                                "'><p>Description de : " + mediasPage[indice].title + " </p></video>"
     }
 }
-
 
 // afficher media suivant et precedent dans la ligthbox 
 
-function displayNextMedia(currentMediaIndex) {
-    ++currentMediaIndex
-                if (currentMediaIndex > mediasPage.length - 1) {
-                    currentMediaIndex = 0
-                }
-                displayCurrentMedia(currentMediaIndex)
-    return currentMediaIndex
-}
-
-function displayPreviousMedia(currentMediaIndex) {
-    --currentMediaIndex
-                if (currentMediaIndex < 0) {
-                    currentMediaIndex = mediasPage.length - 1
-                }
-                displayCurrentMedia(currentMediaIndex)
-    return currentMediaIndex
-}
 
 
 function navigateBetweenMedias(currentMediaIndex) {
@@ -135,6 +124,25 @@ function navigateBetweenMedias(currentMediaIndex) {
     
         }
     })
+}
+
+// specificité premier et dernier media
+function displayNextMedia(currentMediaIndex) {
+    ++currentMediaIndex
+                if (currentMediaIndex > mediasPage.length - 1) {
+                    currentMediaIndex = 0
+                }
+                displayCurrentMedia(currentMediaIndex)
+    return currentMediaIndex
+}
+
+function displayPreviousMedia(currentMediaIndex) {
+    --currentMediaIndex
+                if (currentMediaIndex < 0) {
+                    currentMediaIndex = mediasPage.length - 1
+                }
+                displayCurrentMedia(currentMediaIndex)
+    return currentMediaIndex
 }
 
 // afficher media suivant et precedent en utilisant souris ou clavier
@@ -178,4 +186,4 @@ document.addEventListener('keydown', function(e) {
 // attention !! focus sur le lightBoxMedia à l'ouverture de la modale
 // puis focus sur l'image et le titre
 // donne l'impression d'un double focus car le contenu prend la taille du contenant
-// reflechir à une solution
+// reflechir à une solution si besoin
