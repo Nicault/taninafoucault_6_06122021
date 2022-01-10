@@ -173,6 +173,7 @@ function closeWithKeyboard(e) {
     closeModal()
     closeValidation()
     closeLightBox()
+    toggleStyle()
   }
 }
 
@@ -209,7 +210,6 @@ function keepFocusOnModal(e, firstElement, lastElement) {
       e.preventDefault();
     }
   }
-
 }
 
 document.addEventListener('keydown', function(e) {

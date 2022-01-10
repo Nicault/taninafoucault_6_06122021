@@ -2,61 +2,85 @@
 
 const trieur = document.createElement("div")
 trieur.classList.add("trieur")
+
 const textTrieur = document.createElement("label")
 textTrieur.textContent = "Trier par"
 textTrieur.classList.add("textTrieur")
 textTrieur.setAttribute("tabIndex", "0")
-const navTrieur = document.createElement("div")
+
+
 const triButton = document.createElement("button")
 triButton.classList.add("contact_button")
 triButton.classList.add("triButton")
+triButton.setAttribute("role", "button")
 triButton.setAttribute("aria-haspopup", "listbox")
 triButton.setAttribute("aria-expanded", "false")
-const triStyle = document.createElement("div")
-triStyle.classList.add("triStyle")
+triButton.classList.add("triButtonText")
+
+const spanSRT = document.createElement("span")
+spanSRT.classList.add("screenreader-text")
+spanSRT.textContent = "Trier par : "
+
 const chevron = document.createElement("i")
 chevron.classList.add("fas")
 chevron.classList.add("fa-chevron-down")
-const triListe = document.createElement("div")
+
+const triListe = document.createElement("ul")
 triListe.setAttribute("role", "listbox")
 triListe.classList.add("triListe")
+triListe.classList.add("none")
 triListe.setAttribute("tabIndex", "-1")
-const pop = document.createElement("a")
-pop.setAttribute("id", "pop")
-pop.href = "#"
-pop.textContent = "Popularité"
-pop.setAttribute("aria-label","Popularité")
-pop.setAttribute("role", "listbox")
-const date = document.createElement("a")
-date.setAttribute("id", "date")
-date.href = "#"
-date.textContent = "Date"
-date.setAttribute("aria-label","Date")
-date.setAttribute("role", "listbox")
-const titre = document.createElement("a")
-titre.setAttribute("id", "titre")
-titre.href = "#"
-titre.textContent = "Titre"
-titre.setAttribute("aria-label","Titre")
-titre.setAttribute("role", "listbox")
+
+const triListeBG = document.createElement("div")
+triListeBG.classList.add("triListeBG")
+triListeBG.classList.add("none")
+
+const pop = document.createElement("li")
+const popLien = document.createElement("a")
+popLien.setAttribute("id", "pop")
+popLien.href = "#"
+pop.setAttribute("class", "dropDownItem")
+popLien.innerHTML = "<span class='screenreader-text'>Trier par : </span>Popularité"
+
+const date = document.createElement("li")
+const dateLien = document.createElement("a")
+dateLien.setAttribute("id", "date")
+dateLien.href = "#"
+date.setAttribute("class", "dropDownItem")
+dateLien.innerHTML = "<span class='screenreader-text'>Trier par : </span>Date"
+
+const titre = document.createElement("li")
+const titreLien = document.createElement("a")
+titreLien.setAttribute("id", "titre")
+titreLien.href = "#"
+titre.setAttribute("class", "dropDownItem")
+titreLien.innerHTML = "<span class='screenreader-text'>Trier par : </span>Titre"
+
+// const chevronListe = document.createElement("i")
+// chevronListe.classList.add("fas")
+// chevronListe.classList.add("fa-chevron-down")
+
 
 body.appendChild(trieur)
+body.appendChild(triListeBG)
 trieur.appendChild(textTrieur)
-trieur.appendChild(navTrieur)
-navTrieur.appendChild(triButton)
-triButton.appendChild(triStyle)
+trieur.appendChild(triButton)
+trieur.appendChild(triListe)
 triButton.appendChild(chevron)
-triButton.appendChild(triListe)
 triListe.appendChild(pop)
+pop.appendChild(popLien)
 triListe.appendChild(date)
+date.appendChild(dateLien)
 triListe.appendChild(titre)
+titre.appendChild(titreLien)
+// trieur.appendChild(chevronListe)
 
 body.insertBefore(trieur, mediasSection)
 
 
-// tri : efface tous les mediats puis les recréé dans le bon ordre
+// tri : efface tous les medias puis les recréé dans l'ordre souhaité
 
-function sortedFactory() { 
+function displayDataSortedMedias() { 
     mediasSection.innerHTML = ""
 
     for (let i = 0 ; i < mediasPage.length ; i++ ) {
@@ -71,10 +95,10 @@ function sortedFactory() {
 //les plus aimées
 
 
-function displayByLikes90(mediasPage) {
+function sortByLikes90() {
 
     mediasPage.sort(function(a, b){return b.likes - a.likes})
-};
+}
 
 //les moins aimées
 
@@ -85,10 +109,10 @@ function displayByLikes90(mediasPage) {
 
 //les plus recent
 
-function displayByDate90(mediasPage) {
+function sortByDate90() {
 
     mediasPage.sort(function(a, b){return b.date.replaceAll("-", "") - a.date.replaceAll("-", "")})
-};
+}
 
 //les plus anciens 
 
@@ -100,10 +124,10 @@ function displayByDate90(mediasPage) {
 
 //alpha a - z
 
-function displayByNameAZ(mediasPage) {
+function SortByNameAZ() {
 
     mediasPage.sort(function(a, b){return a.title.localeCompare(b.title)})
-};
+}
 
 //alpha z - a
 
@@ -117,58 +141,70 @@ function displayByNameAZ(mediasPage) {
 // fonction à appeler + fonction like + display lightbox car les elements bougent après le tri /!\ 
 
 function initSortedMedias(fonction) {
-    fonction(mediasPage);
-    sortedFactory()
+    fonction();
+    displayDataSortedMedias()
     like()
     displayLightboxMedias()
-};
-
+}
 
 // pop date titre eventListeners
 
 
-pop.addEventListener("click", function() {initSortedMedias(displayByLikes90)})
-date.addEventListener("click", function() {initSortedMedias(displayByDate90)})
-titre.addEventListener("click", function() {initSortedMedias(displayByNameAZ)})
+popLien.addEventListener("click", function() {initSortedMedias(sortByLikes90)})
+dateLien.addEventListener("click", function() {initSortedMedias(sortByDate90)})
+titreLien.addEventListener("click", function() {initSortedMedias(SortByNameAZ)})
 
 
 // changement de l'affichage du menu de tri
 
-let pdt = [pop, date, titre]
+let pdt = [popLien, dateLien, titreLien]
 
 
 let triButtonTextContent = "Défaut"
-triStyle.textContent = triButtonTextContent
-triButton.setAttribute("aria-activedescendant", triButtonTextContent)
-
+triButton.innerHTML = "<span class='screenreader-text'>Trier par : </span>" + triButtonTextContent
+// triButton.setAttribute("aria-activedescendant", triButtonTextContent)
 
 
 function toggleStyle() {
-    chevron.classList.toggle("rotate")
-    triListe.classList.toggle("list")
-    triButton.classList.toggle("listHeight") 
-
-    if (triButton.classList.contains("listHeight")){
-        triButton.setAttribute("aria-expanded", "true")
-    } 
-    else {
-        triButton.setAttribute("aria-expanded", "false")
-
-    }
+    // chevronListe.classList.toggle("rotate")
+    triListe.classList.toggle("none")
+    triListe.classList.toggle("block")
+    triButton.classList.toggle("none")
+    triListeBG.classList.toggle("none")
+    triButton.setAttribute("aria-expanded", "false")
     
 }
 
 
 
 triButton.addEventListener("click", function(){
-    triStyle.textContent = ""
+    // triButtonText.textContent = ""
     toggleStyle()
-
-    if (!chevron.classList.contains("rotate")) {
-        triStyle.textContent = triButtonTextContent
+    if (triListe.classList.contains("block")) {
+        triButton.innerHTML = "<span class='screenreader-text'>Trier par : </span>" + triButtonTextContent
     }
 })
 
+
+
+//  ATTENTION NE PAS EFFACER .. VOIR POUR RAJOUTER CET ELEMENT
+
+// chevronListe.addEventListener("click", function() {
+//     toggleStyle()
+//     if (triListe.classList.contains("block")) {
+//         triButtonText.innerHTML = "<span class='screenreader-text'>Trier par : </span>" + triButtonTextContent
+//     }
+// })
+
+// chevronListe.addEventListener("keydown", function(e) {
+//     if (e.code == "Enter") {
+//         popLien.focus()
+//         toggleStyle()
+//         if (triListe.classList.contains("block")) {
+//             triButton.innerHTML = "<span class='screenreader-text'>Trier par : </span>" + triButtonTextContent
+//         }
+//     }
+// })
 
 
 
@@ -176,9 +212,22 @@ for (let i = 0 ; i < pdt.length ; i++) {
     pdt[i].addEventListener("click", function(e){
         e.stopPropagation()
         toggleStyle()
-        triStyle.textContent = pdt[i].textContent
-        triButtonTextContent = pdt[i].textContent
+        triButton.innerHTML = pdt[i].innerHTML
+        triButtonTextContent = pdt[i].innerHTML
         triButton.setAttribute("aria-activedescendant", triButtonTextContent)
         })
 }
+
+// fermer quand click ailleurs*
+
+triListeBG.addEventListener("click", function(){
+    toggleStyle()
+})
+
+// garder le focus dans le menu de tri
+
+document.addEventListener('keydown', function(e) {
+    keepFocusOnModal(e, popLien, titreLien) 
+  })
+  
 

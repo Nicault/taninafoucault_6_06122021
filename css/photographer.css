@@ -12,7 +12,7 @@
     font-size: 20px;
     font-weight: bold;
     color: white;
-    padding: 11px;
+    padding: 10px;
     width: 170px;
     height: 70px;
     border: none;
@@ -265,84 +265,93 @@ aside div:first-of-type {
 }
 
 
+.triListeBG{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 9;
+}
 
 .trieur {
     height: 48px;
     width: 100%;
     display: flex;
     margin-bottom: 30px;
+    position: relative;
 }
 
-.textTrieur{
-    height: fit-content;
-    margin-right: 20px;
-    color: black;
-    align-self: center;
-    font-weight: bold;
 
+.textTrieur {
+    font-weight: bold;
+    margin : auto;
+    text-align: left;
+    width: 100%;
+}
+.triButton{
+    margin : auto;
+    left: 75px;
+    position: absolute;
+    height: 70px;
+    margin-top: -10px;
+}
+.triButtonText{
+    text-align: left;
 }
 
 .triListe{
-    display: none;
-    /* width: 170px;
-    display: flex;
-    flex-direction: column; */
-    /* justify-content: space-between; */
-
-}
-
-.triListe a, .triStyle {
-    height: 48px;
+    z-index: 10;
+    margin-top: -10px;
+    left: 75px;
+    width: 170px;
+    border-radius: 5px;
+    font-size: 20px;
     color: white;
-    text-align: left;
-    padding: 15px 50px 15px 15px;
-    position: relative;
-    font-weight: normal;
-    font-size: 16px;
+    border: none;
+    padding: 10px;
+    background-color: #901C1C;
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute;
+    background-color: #901C1C;
 }
 
-
-.triListe a:hover {
+.triListe li {
+    display: flex;
+    height: 50px;
+}
+.triListe li:hover{
     font-weight: bold;
 }
 
-.triListe a:first-of-type::after, .triListe a:nth-of-type(2)::after{
+.triListe li a {
+    position: relative;
+    width: 120px;
+    display: flex;
+    align-items: center;
+}
+
+.dropDownItem:first-of-type a::after, .dropDownItem:nth-of-type(2) a::after{
     position: absolute;
-    top: 48px;
-    left: 10px;
+    top: 50px;
+    left: 0;
     content: "";
     height: 1px;
     width: 150px;
     background-color: white;
 }
 
-.triButton{
-    position: absolute;
-    min-height: 48px;    
-    height: fit-content;
-    padding: 0;
-    overflow: hidden;
-}
-.triButton:hover{
-    background-color: #901C1C;
-    color: white;
-}
-
-.triStyle {
-    position: absolute;
-    top: 0;
-}
-.triStyle:hover {
-    color: white;
-}
 
 
 .fa-chevron-down{
-    height: 20px;
-    width: 20px;
+    text-align: center;
+    height: 70px;
+    width: 40px;
     position: absolute;
-    right: 10px;
-    top: 14px;
+    right: 0;
+    top: 0;
+    padding-top: 25px;
     /* z-index: 1000; */
 }
 
@@ -350,15 +359,6 @@ aside div:first-of-type {
     transform: rotate(180deg);
 }
 
-.list {
-    position: absolute;
-    bottom: 5px;
-    display: flex;
-    flex-direction: column; 
-}
-.listHeight{
-    height: 149px; 
-}
 
 article img, article video {
     cursor: pointer;

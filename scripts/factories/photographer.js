@@ -27,7 +27,7 @@ function photographerFactory(data) {
 
         const lien = document.createElement('a')
         lien.href = "photographer.html?id=" + id
-        lien.tabIndex = -1
+        // lien.tabIndex = -1
 
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture)
