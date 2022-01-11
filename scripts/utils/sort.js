@@ -161,7 +161,6 @@ function initSortedMedias(fonction) {
 
 // pop date titre eventListeners
 
-
 popLien.addEventListener("click", function() {initSortedMedias(sortByLikes90)})
 dateLien.addEventListener("click", function() {initSortedMedias(sortByDate90)})
 titreLien.addEventListener("click", function() {initSortedMedias(SortByNameAZ)})
@@ -204,7 +203,7 @@ for (let i = 0 ; i < pdt.length ; i++) {
     })
 }
 
-// fermer quand click ailleurs*
+// fermer quand click ailleurs
 
 triListeBG.addEventListener("click", function(){
     toggleStyle()
