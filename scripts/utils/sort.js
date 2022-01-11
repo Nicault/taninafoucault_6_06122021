@@ -28,6 +28,7 @@ chevron.removeAttribute("aria-hidden")
 
 const triListe = document.createElement("ul")
 triListe.setAttribute("role", "listbox")
+triListe.setAttribute("id", "Tri")
 triListe.classList.add("triListe")
 triListe.classList.add("none")
 triListe.setAttribute("tabIndex", "-1")
@@ -40,6 +41,8 @@ const pop = document.createElement("li")
 const popLien = document.createElement("a")
 popLien.setAttribute("id", "pop")
 popLien.href = "#"
+popLien.setAttribute("role", "option")
+popLien.setAttribute("id", "Tri-1")
 pop.setAttribute("class", "dropDownItem")
 popLien.innerHTML = "<span class='screenreader-text'>Trier par : </span>Popularité"
 
@@ -47,6 +50,8 @@ const date = document.createElement("li")
 const dateLien = document.createElement("a")
 dateLien.setAttribute("id", "date")
 dateLien.href = "#"
+dateLien.setAttribute("role", "option")
+dateLien.setAttribute("id", "Tri-2")
 date.setAttribute("class", "dropDownItem")
 dateLien.innerHTML = "<span class='screenreader-text'>Trier par : </span>Date"
 
@@ -54,6 +59,8 @@ const titre = document.createElement("li")
 const titreLien = document.createElement("a")
 titreLien.setAttribute("id", "titre")
 titreLien.href = "#"
+titreLien.setAttribute("role", "option")
+titreLien.setAttribute("id", "Tri-3")
 titre.setAttribute("class", "dropDownItem")
 titreLien.innerHTML = "<span class='screenreader-text'>Trier par : </span>Titre"
 
@@ -174,9 +181,7 @@ function toggleStyle() {
     triListe.classList.toggle("none")
     triButton.classList.toggle("none")
     triListeBG.classList.toggle("none")
-    triButton.setAttribute("aria-expanded", "false")
-    chevron.setAttribute("aria-label", "Fermer le menu de tri")
-    chevron.removeAttribute("aria-hidden")
+    triButton.setAttribute("aria-expanded", "true")
 }
 
 
@@ -196,7 +201,7 @@ for (let i = 0 ; i < pdt.length ; i++) {
         triButton.innerHTML = pdt[i].innerHTML
         triButtonTextContent = pdt[i].innerHTML
         triButton.setAttribute("aria-activedescendant", triButtonTextContent)
-        })
+    })
 }
 
 // fermer quand click ailleurs*
