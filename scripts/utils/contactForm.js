@@ -173,7 +173,9 @@ function closeWithKeyboard(e) {
     closeModal()
     closeValidation()
     closeLightBox()
-    toggleStyle()
+    if (!triListe.classList.contains("none")) {
+      toggleStyle()
+    }
   }
 }
 
