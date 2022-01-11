@@ -28,7 +28,6 @@ chevron.removeAttribute("aria-hidden")
 
 const triListe = document.createElement("ul")
 triListe.setAttribute("role", "listbox")
-triListe.setAttribute("id", "Tri")
 triListe.classList.add("triListe")
 triListe.classList.add("none")
 triListe.setAttribute("tabIndex", "-1")
@@ -42,7 +41,6 @@ const popLien = document.createElement("a")
 popLien.setAttribute("id", "pop")
 popLien.href = "#"
 popLien.setAttribute("role", "option")
-popLien.setAttribute("id", "Tri-1")
 pop.setAttribute("class", "dropDownItem")
 popLien.innerHTML = "<span class='screenreader-text'>Trier par : </span>Popularité"
 
@@ -51,7 +49,6 @@ const dateLien = document.createElement("a")
 dateLien.setAttribute("id", "date")
 dateLien.href = "#"
 dateLien.setAttribute("role", "option")
-dateLien.setAttribute("id", "Tri-2")
 date.setAttribute("class", "dropDownItem")
 dateLien.innerHTML = "<span class='screenreader-text'>Trier par : </span>Date"
 
@@ -60,7 +57,6 @@ const titreLien = document.createElement("a")
 titreLien.setAttribute("id", "titre")
 titreLien.href = "#"
 titreLien.setAttribute("role", "option")
-titreLien.setAttribute("id", "Tri-3")
 titre.setAttribute("class", "dropDownItem")
 titreLien.innerHTML = "<span class='screenreader-text'>Trier par : </span>Titre"
 

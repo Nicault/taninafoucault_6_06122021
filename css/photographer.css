@@ -285,14 +285,16 @@ aside div:first-of-type {
     display: flex;
     margin-bottom: 60px;
     position: relative;
+    justify-content: flex-start ;
 }
 
 
 .textTrieur {
     font-weight: bold;
-    margin : auto;
     text-align: left;
-    width: 100%;
+    width: auto;
+    display: flex;
+    align-items: center;
 }
 .triButton{
     margin : auto;
