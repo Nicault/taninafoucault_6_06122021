@@ -24,6 +24,7 @@ spanSRT.textContent = "Trier par : "
 const chevron = document.createElement("i")
 chevron.classList.add("fas")
 chevron.classList.add("fa-chevron-down")
+chevron.removeAttribute("aria-hidden")
 
 const triListe = document.createElement("ul")
 triListe.setAttribute("role", "listbox")
@@ -56,9 +57,7 @@ titreLien.href = "#"
 titre.setAttribute("class", "dropDownItem")
 titreLien.innerHTML = "<span class='screenreader-text'>Trier par : </span>Titre"
 
-// const chevronListe = document.createElement("i")
-// chevronListe.classList.add("fas")
-// chevronListe.classList.add("fa-chevron-down")
+
 
 
 body.appendChild(trieur)
@@ -66,16 +65,22 @@ body.appendChild(triListeBG)
 trieur.appendChild(textTrieur)
 trieur.appendChild(triButton)
 trieur.appendChild(triListe)
-triButton.appendChild(chevron)
+trieur.appendChild(chevron)
 triListe.appendChild(pop)
 pop.appendChild(popLien)
 triListe.appendChild(date)
 date.appendChild(dateLien)
 triListe.appendChild(titre)
 titre.appendChild(titreLien)
-// trieur.appendChild(chevronListe)
 
 body.insertBefore(trieur, mediasSection)
+
+
+// class over et active pour le chevron
+
+triButton.addEventListener("mouseon", function(){
+    chevron.classList.toggle("hoverActive")
+})
 
 
 // tri : efface tous les medias puis les recréé dans l'ordre souhaité
@@ -161,51 +166,27 @@ let pdt = [popLien, dateLien, titreLien]
 
 
 let triButtonTextContent = "Défaut"
-triButton.innerHTML = "<span class='screenreader-text'>Trier par : </span>" + triButtonTextContent
+triButton.innerHTML = "<span class='screenreader-text'>Trier par : </span>" + triButtonTextContent 
 // triButton.setAttribute("aria-activedescendant", triButtonTextContent)
 
-
 function toggleStyle() {
-    // chevronListe.classList.toggle("rotate")
+    chevron.classList.toggle("rotate")
     triListe.classList.toggle("none")
-    triListe.classList.toggle("block")
     triButton.classList.toggle("none")
     triListeBG.classList.toggle("none")
     triButton.setAttribute("aria-expanded", "false")
-    
+    chevron.setAttribute("aria-label", "Fermer le menu de tri")
+    chevron.removeAttribute("aria-hidden")
 }
 
 
-
-triButton.addEventListener("click", function(){
-    // triButtonText.textContent = ""
-    toggleStyle()
-    if (triListe.classList.contains("block")) {
-        triButton.innerHTML = "<span class='screenreader-text'>Trier par : </span>" + triButtonTextContent
+triButton.addEventListener("click", function(){toggleStyle()})
+chevron.addEventListener("click", function() {toggleStyle()})
+chevron.addEventListener("keydown", function(e) {
+    if (e.code == "Enter") {
+        toggleStyle()
     }
 })
-
-
-
-//  ATTENTION NE PAS EFFACER .. VOIR POUR RAJOUTER CET ELEMENT
-
-// chevronListe.addEventListener("click", function() {
-//     toggleStyle()
-//     if (triListe.classList.contains("block")) {
-//         triButtonText.innerHTML = "<span class='screenreader-text'>Trier par : </span>" + triButtonTextContent
-//     }
-// })
-
-// chevronListe.addEventListener("keydown", function(e) {
-//     if (e.code == "Enter") {
-//         popLien.focus()
-//         toggleStyle()
-//         if (triListe.classList.contains("block")) {
-//             triButton.innerHTML = "<span class='screenreader-text'>Trier par : </span>" + triButtonTextContent
-//         }
-//     }
-// })
-
 
 
 for (let i = 0 ; i < pdt.length ; i++) {
@@ -224,10 +205,9 @@ triListeBG.addEventListener("click", function(){
     toggleStyle()
 })
 
-// garder le focus dans le menu de tri
 
+// garder le focus dans le menu de tri
 document.addEventListener('keydown', function(e) {
     keepFocusOnModal(e, popLien, titreLien) 
-  })
-  
+})
 

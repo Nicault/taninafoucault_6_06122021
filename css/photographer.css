@@ -26,6 +26,11 @@ button:hover, button:active{
     color: black;
 }
 
+.hoverActive{
+    background-color: #D3573C;
+    color: black;
+}
+
 
 
 .modal {
@@ -234,7 +239,7 @@ aside {
     bottom: 0;
     right: 15%;
     height: 45px;
-    width: 250px;
+    width: 270px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -278,7 +283,7 @@ aside div:first-of-type {
     height: 48px;
     width: 100%;
     display: flex;
-    margin-bottom: 30px;
+    margin-bottom: 60px;
     position: relative;
 }
 
@@ -342,18 +347,21 @@ aside div:first-of-type {
     background-color: white;
 }
 
-
-
 .fa-chevron-down{
     text-align: center;
     height: 70px;
     width: 40px;
     position: absolute;
-    right: 0;
-    top: 0;
+    left: 205px;
+    top: -10px;
     padding-top: 25px;
-    /* z-index: 1000; */
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    z-index: 11;
 }
+
 
 .rotate{
     transform: rotate(180deg);
