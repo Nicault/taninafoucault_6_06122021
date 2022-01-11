@@ -19,14 +19,14 @@ exit.setAttribute("id", "croixLightbox")
 lightBoxBG.classList.add("modalBG")
 chevronR.classList.add("fas")
 chevronR.classList.add("fa-chevron-right")
-chevronR.setAttribute("tabIndex", "0")
-chevronR.setAttribute("aria-label","élément suivant")
+// chevronR.setAttribute("tabIndex", "0")
+// chevronR.setAttribute("aria-label","élément suivant")
 chevronR.innerHTML = "<span class='screenreader-text'>élément suivant</span>"
 
 chevronL.classList.add("fas" )
 chevronL.classList.add("fa-chevron-left")
-chevronL.setAttribute("tabIndex", "0")
-chevronL.setAttribute("aria-label","élément précédent")
+// chevronL.setAttribute("tabIndex", "0")
+// chevronL.setAttribute("aria-label","élément précédent")
 chevronL.innerHTML = "<span class='screenreader-text'>élément précédent</span>"
 
 lightBoxMedia.classList.add("lightBoxMedia")
@@ -95,9 +95,10 @@ function navigateBetweenMedias(currentMediaIndex) {
     chevronR.addEventListener("click", function() {
         currentMediaIndex = displayNextMedia(currentMediaIndex)
     })
-    // suivant selection clavier + Entrée
-    chevronR.addEventListener("keydown", function(e) {
-        if (e.code == "Enter") {
+    // suivant selection screenreader
+    document.addEventListener("keydown", function(e) {
+        if (lightBoxScreen.style.display == "block" && e.code == "Space" && !e.shiftKey) {
+            e.preventDefault()
             currentMediaIndex = displayNextMedia(currentMediaIndex)
         }
     })
@@ -111,11 +112,12 @@ function navigateBetweenMedias(currentMediaIndex) {
     chevronL.addEventListener("click", function() {
         currentMediaIndex = displayPreviousMedia(currentMediaIndex)
     })
-    // precedent selection clavier + Entrée
-    chevronL.addEventListener("keydown", function(e) {
-        if (e.code == "Enter") {
+    // precedent selection screenreader
+    document.addEventListener("keydown", function(e) {
+        if (lightBoxScreen.style.display == "block" && e.shiftKey && e.code =="Space"){
+            e.preventDefault()    
             currentMediaIndex = displayPreviousMedia(currentMediaIndex)
-        }
+        }      
     })
     // precedent fleches
     document.addEventListener("keydown", function(e) {
@@ -164,7 +166,7 @@ function displayLightboxMedias() {
                 displayCurrentMedia(currentMediaIndex)
                 navigateBetweenMedias(currentMediaIndex)
             }
-        })  
+        }) 
     }
 }
 
@@ -177,7 +179,7 @@ displayLightboxMedias()
 
 
 document.addEventListener('keydown', function(e) {
-    keepFocusOnModal(e, lightBoxMedia, chevronL) 
+    keepFocusOnModal(e, lightBoxMedia, lightBoxMediaTitle) 
   })
 
 
