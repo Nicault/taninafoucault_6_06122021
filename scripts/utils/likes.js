@@ -1,9 +1,9 @@
 
 // LIKES
-let likesNumber = document.querySelectorAll(".likesNumber")
 let likesCount
 
 function total () {
+    let likesNumber = document.querySelectorAll(".likesNumber")
     likesCount = 0
 
     for (let i = 0 ; i < likesNumber.length ; i++) {

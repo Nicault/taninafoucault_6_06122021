@@ -95,7 +95,7 @@ function navigateBetweenMedias(currentMediaIndex) {
     chevronR.addEventListener("click", function() {
         currentMediaIndex = displayNextMedia(currentMediaIndex)
     })
-    // suivant selection screenreader
+    // suivant touche espace
     document.addEventListener("keydown", function(e) {
         if (lightBoxScreen.style.display == "block" && e.code == "Space" && !e.shiftKey) {
             e.preventDefault()
@@ -112,7 +112,7 @@ function navigateBetweenMedias(currentMediaIndex) {
     chevronL.addEventListener("click", function() {
         currentMediaIndex = displayPreviousMedia(currentMediaIndex)
     })
-    // precedent selection screenreader
+    // precedent shift + espace
     document.addEventListener("keydown", function(e) {
         if (lightBoxScreen.style.display == "block" && e.shiftKey && e.code =="Space"){
             e.preventDefault()    
