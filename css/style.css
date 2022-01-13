@@ -6,9 +6,9 @@
     font-family: "DM Sans", sans-serif;
 }
 
-*:focus{
+/* *:focus{
     outline: 1px solid black;
-}
+} */
 
 a {
     text-decoration: none;

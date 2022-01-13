@@ -27,13 +27,13 @@ function like() {
             if (iconHeart[i].classList.contains("far")){
             likeButton[i].setAttribute("aria-pressed", "true")
             likesNumber[i].textContent++
-            likesCount++
+            // likesCount++
             iconHeart[i].classList.remove("far")
             iconHeart[i].classList.add("fas")
             } else {
             likeButton[i].setAttribute("aria-pressed", "false")
             likesNumber[i].textContent --
-            likesCount--
+            // likesCount--
             iconHeart[i].classList.add("far")
             iconHeart[i].classList.remove("fas")
             }
